@@ -13,7 +13,7 @@ import { SharedModule } from './shared/shared.module';
 
 import {DropdownModule,AlertModule} from 'ng2-bootstrap'
 
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyCvN9K2cdfUf4H8BIr8vqRhdtGV_ca2UIs',
@@ -21,6 +21,11 @@ export const firebaseConfig = {
     databaseURL: 'https://drishti-bd782.firebaseio.com',
     storageBucket: 'drishti-bd782.appspot.com',
     messagingSenderId: '37494669483',
+};
+
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
 };
 
 @NgModule({
@@ -34,7 +39,7 @@ export const firebaseConfig = {
 		SharedModule.forRoot(),
 		DropdownModule.forRoot(),
 		AlertModule.forRoot(),
-	    AngularFireModule.initializeApp(firebaseConfig)
+	    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
 
 	],
 	declarations: [AppComponent],
