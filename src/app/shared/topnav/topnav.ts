@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+declare var $
+
 @Component({
     moduleId: module.id,
     selector: 'top-nav',

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 
-import { ModalDirective } from 'ng2-bootstrap/components/modal/modal.component';
+import { ModalDirective } from 'ng2-bootstrap/modal/modal.component';
 
 @Component({
 	moduleId: module.id,
