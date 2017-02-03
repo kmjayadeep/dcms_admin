@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef,ViewEncapsulation } from '@angular/core';
 import { Config } from './shared/index';
 
 /**
@@ -9,6 +9,8 @@ import { Config } from './shared/index';
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
+  styleUrls:['../assets/sass/app.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 
 export class AppComponent {
