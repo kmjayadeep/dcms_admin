@@ -11,6 +11,8 @@ import { SignupModule } from './signup/signup.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 
+import {DropdownModule} from 'ng2-bootstrap'
+
 @NgModule({
 	imports: [
 		BrowserModule,
@@ -19,7 +21,8 @@ import { SharedModule } from './shared/shared.module';
 		LoginModule,
 		SignupModule,
 		DashboardModule,
-		SharedModule.forRoot()
+		SharedModule.forRoot(),
+		DropdownModule.forRoot()
 	],
 	declarations: [AppComponent],
 	providers: [{
