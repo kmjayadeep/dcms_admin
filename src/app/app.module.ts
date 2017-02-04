@@ -16,8 +16,8 @@ import {AuthService} from './services/auth/auth.service'
 import {DropdownModule,AlertModule} from 'ng2-bootstrap'
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-import {ConnectionService} from './connection.service';
-import {UserService} from './user.service';
+import {ConnectionService} from './services/connection.service';
+import {UserService} from './services/user.service';
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyCvN9K2cdfUf4H8BIr8vqRhdtGV_ca2UIs',

@@ -1,8 +1,8 @@
 import { Injectable, Inject, Component } from '@angular/core';
 import {AuthService} from '../services/auth/auth.service'
+import {UserService} from '../services/user.service';
 import {Router} from '@angular/router'
 import {AngularFire, FirebaseApp} from 'angularfire2';
-import {UserService} from '../user.service';
 declare var firebase : any;
 
 /**
@@ -17,23 +17,27 @@ declare var firebase : any;
 
 export class LoginComponent { 
 
-	public constructor(private authService:AuthService,private router:Router){
+	public constructor(private authService:AuthService,private router:Router, private userService: UserService){
 		authService.af.auth.subscribe((auth)=>{
 			if(auth == null) {
          	  console.log("Not Logged in.");
+
 	        }
 	        else {
- 	          console.log("Successfully Logged in.");
- 	          console.log(auth)
-			  this.router.navigate(['dashboard/home'])
+
 	        }
 		})
 	}
 
 	login(){
 		this.authService.login().then(data=>{
-			console.log(data)
-			this.router.navigate(['dashboard/home'])
+			this.userService.login(this.authService.idToken,this.authService.user)
+			.subscribe((result)=>{
+				console.log(result);
+				if (result.code){
+					//TODO print error to user
+				}
+			});
 		})
 	}
 

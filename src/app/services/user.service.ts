@@ -9,9 +9,13 @@ export class UserService extends ConnectionService{
 		super();
 	}
 
-	login(idToken): any {
-		console.log(idToken);
-		this.http
-		.post(this.userApi + '/login', {idToken:idToken});
+	login(idToken, user): any {
+		return this.http
+			.post(this.userApi + '/login', 
+			{
+				idToken: idToken,
+				uid: user.uid,
+				name: user.displayName
+			});
 	}
 }

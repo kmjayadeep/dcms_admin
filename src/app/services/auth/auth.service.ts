@@ -11,6 +11,7 @@ export class AuthService {
 	firebase: any;
 	user = {};
 	loggedIn:boolean = false
+	idToken: any;
 
 	public constructor(public af: AngularFire, @Inject(FirebaseApp) firebase: any){
 		this.firebase = firebase;
@@ -18,15 +19,17 @@ export class AuthService {
 			if(user){
 				this.user = user
 				this.loggedIn = true
+				firebase.auth().currentUser
+				.getToken(true)
+				.then(idToken => {
+					this.idToken = idToken;
+				}).catch(function(error){
+					console.log(error);
+				})
 			}else{
 				this.user = {}
 				this.loggedIn = false
 			}
-		// 	console.log(this.user)
-	 //    	firebase.auth().currentUser.getToken(/* forceRefresh */ true).then(function(idToken) {
-	 //    	}).catch(function(error) {
-	 //    		console.log(error);
-	 //    	});
 	 	});
 	}
 	login(){
