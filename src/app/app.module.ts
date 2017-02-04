@@ -11,6 +11,8 @@ import { SignupModule } from './signup/signup.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 
+import {AuthService} from './services/auth/auth.service'
+
 import {DropdownModule,AlertModule} from 'ng2-bootstrap'
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -25,7 +27,7 @@ export const firebaseConfig = {
 
 const myFirebaseAuthConfig = {
   provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
+  method: AuthMethods.Popup
 };
 
 @NgModule({
@@ -40,14 +42,13 @@ const myFirebaseAuthConfig = {
 		DropdownModule.forRoot(),
 		AlertModule.forRoot(),
 	    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
-
 	],
 	declarations: [AppComponent],
 	providers: [{
 		provide: APP_BASE_HREF,
 		// useValue: '<%= APP_BASE %>'
 		useValue: '/'
-	}],
+	},AuthService],
 	bootstrap: [AppComponent]
 
 })

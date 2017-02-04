@@ -1,6 +1,6 @@
 import { Injectable, Inject, Component } from '@angular/core';
-import {AngularFire, FirebaseApp} from 'angularfire2';
-declare var firebase : any;
+import {AuthService} from '../services/auth/auth.service'
+import {Router} from '@angular/router'
 
 /**
 *	This class represents the lazy loaded LoginComponent.
@@ -13,25 +13,25 @@ declare var firebase : any;
 })
 
 export class LoginComponent { 
-	firebase: any;
-	public constructor(public af: AngularFire, @Inject(FirebaseApp) firebase: any){
-		this.firebase = firebase;
-		this.af.auth.subscribe(auth => {
-	    	console.log(auth)
-	    	firebase.auth().currentUser.getToken(/* forceRefresh */ true).then(function(idToken) {
-	    		console.log(idToken);
-	    	}).catch(function(error) {
-	    		console.log(error);
-	    	});
-	 	});
-	}
-	login()
-	{
-		this.af.auth.login();
+
+
+	public constructor(private authService:AuthService,private router:Router){
+		authService.af.auth.subscribe((auth)=>{
+			if(auth == null) {
+         	  console.log("Not Logged in.");
+	        }
+	        else {
+ 	          console.log("Successfully Logged in.");
+ 	          console.log(auth)
+			  this.router.navigate(['dashboard/home'])
+	        }
+		})
 	}
 
-	logout()
-	{
-		this.af.auth.logout();
+	login(){
+		this.authService.login().then(data=>{
+			console.log(data)
+			this.router.navigate(['dashboard/home'])
+		})
 	}
 }
