@@ -14,7 +14,7 @@ import {
 		TooltipModule,
 		ModalModule,
 		TypeaheadModule
-	} from 'ng2-bootstrap/ng2-bootstrap';
+	} from 'ng2-bootstrap';
 
 
 import { BSComponentComponent } from './bsComponent.component';
