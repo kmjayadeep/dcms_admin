@@ -23,6 +23,7 @@ export class AuthService {
 				.getToken(false)
 				.then(idToken => {
 					this.idToken = idToken;
+					localStorage['token'] = idToken
 					// console.log(idToken);
 				}).catch(function(error){
 					console.log(error);
