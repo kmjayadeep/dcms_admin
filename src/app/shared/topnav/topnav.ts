@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {UserService} from '../../services/user.service'
+import {AuthService} from '../../services/auth/auth.service'
+import {Router} from '@angular/router'
+
 
 declare var $
 
@@ -9,6 +13,13 @@ declare var $
 })
 
 export class TopNavComponent {
+
+	user = {}
+
+	constructor(private userService:UserService,private authService:AuthService,private router:Router){
+		this.user = userService.user
+	}
+
 	changeTheme(color: string): void {
 		var link: any = $('<link>');
 		link
@@ -27,5 +38,12 @@ export class TopNavComponent {
 		var mainContainer: any = $('.main-container');
 		sidebar.toggleClass('sidebar-left-zero');
 		mainContainer.toggleClass('main-container-ml-zero');
+	}
+
+	logout(){
+		this.authService.logout()
+		.then(()=>{
+			this.router.navigate([''])
+		})
 	}
 }

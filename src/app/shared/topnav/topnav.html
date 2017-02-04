@@ -3,11 +3,10 @@
         <a class="navbar-brand" [routerLink]="['/dashboard','/home']">DCMS Admin 1.0</a>
         
         <ul class="nav navbar-nav top-nav navbar-right pull-xs-right top-right-nav">
-            <li class="nav-item buy-now">
+<!--             <li class="nav-item buy-now">
                 <a href="https://github.com/start-angular/SB-Admin-BS4-Angular-2/archive/master.zip" class="btn btn-default-outline buy-now-btn" role="button" style="padding: .375rem 1rem !important; border-color: #999;">Download Now</a>
             </li>
             <li class="dropdown nav-item" dropdown>
-                <!-- <div class="dropdown"> -->
                     <a class="nav-link dropdown-toggle" href="javascript:;" id="dropdownMenu4" dropdownToggle><i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span></a>
                     <ul class="dropdown-menu message-dropdown" aria-labelledby="dropdownMenu4">
                         <li class="message-preview">
@@ -62,10 +61,8 @@
                             <a href="javascript:;" class="dropdown-item text-center">Read All New Messages</a>
                         </li>
                     </ul>
-                <!-- </div> -->
             </li>
             <li class="dropdown nav-item" dropdown>
-                <!-- <div class="dropdown"> -->
                     <a href="javascript:;" id="name2" class="nav-link dropdown-toggle" dropdownToggle>
                         <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
                     </a>
@@ -84,11 +81,10 @@
                             <a href="javascript:;" class="dropdown-item">View All</a>
                         </li>
                     </ul>
-                <!-- </div> -->
-            </li>
+            </li> -->
             <li class="dropdown nav-item" dropdown>
                 <a href="javascript:;" id="single-button" class="nav-link dropdown-toggle" dropdownToggle >
-                    <i class="fa fa-user"></i> John Smith <b class="caret"></b>
+                    <i class="fa fa-user"></i> {{user.name}} <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="single-button">
                     <li>
@@ -102,7 +98,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a class="dropdown-item" href="javascript:;" [routerLink]="['/']">
+                        <a class="dropdown-item" (click)="logout()">
                             <i class="fa fa-fw fa-power-off"></i> Log Out
                         </a>
                     </li>

@@ -20,10 +20,10 @@ export class AuthService {
 				this.user = user
 				this.loggedIn = true
 				firebase.auth().currentUser
-				.getToken(true)
+				.getToken(false)
 				.then(idToken => {
 					this.idToken = idToken;
-					console.log(idToken);
+					// console.log(idToken);
 				}).catch(function(error){
 					console.log(error);
 				})
@@ -41,6 +41,7 @@ export class AuthService {
 	}
 
 	logout(){
+		localStorage.clear()
 		return this.af.auth.logout();
 	}
 }
