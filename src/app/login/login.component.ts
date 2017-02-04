@@ -3,6 +3,9 @@ import {AuthService} from '../services/auth/auth.service'
 import {UserService} from '../services/user.service';
 import {Router} from '@angular/router'
 import {AngularFire, FirebaseApp} from 'angularfire2';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+
 declare var firebase : any;
 
 /**
@@ -18,26 +21,22 @@ declare var firebase : any;
 export class LoginComponent { 
 
 	public constructor(private authService:AuthService,private router:Router, private userService: UserService){
-		authService.af.auth.subscribe((auth)=>{
-			if(auth == null) {
-         	  console.log("Not Logged in.");
-
-	        }
-	        else {
-
-	        }
-		})
+		
 	}
 
 	login(){
-		this.authService.login().then(data=>{
-			this.userService.login(this.authService.idToken,this.authService.user)
-			.subscribe((result)=>{
-				console.log(result);
-				if (result.code){
-					//TODO print error to user
-				}
-			});
+		this.authService.login()
+		.then(data=>{
+			return this.userService.login(this.authService.idToken)
+			.map(res=>res.json())
+			.toPromise()
+		}).then(user=>{
+			console.log(user)
+			localStorage['profile'] = user
+			this.router.navigate(['dashboard/home'])
+		})
+		.catch(err=>{
+			console.log(err)
 		})
 	}
 
