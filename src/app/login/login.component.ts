@@ -1,6 +1,9 @@
 import { Injectable, Inject, Component } from '@angular/core';
 import {AuthService} from '../services/auth/auth.service'
 import {Router} from '@angular/router'
+import {AngularFire, FirebaseApp} from 'angularfire2';
+import {UserService} from '../user.service';
+declare var firebase : any;
 
 /**
 *	This class represents the lazy loaded LoginComponent.
@@ -13,7 +16,6 @@ import {Router} from '@angular/router'
 })
 
 export class LoginComponent { 
-
 
 	public constructor(private authService:AuthService,private router:Router){
 		authService.af.auth.subscribe((auth)=>{
@@ -33,5 +35,9 @@ export class LoginComponent {
 			console.log(data)
 			this.router.navigate(['dashboard/home'])
 		})
+	}
+
+	logout(){
+		this.authService.logout();
 	}
 }

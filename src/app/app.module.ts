@@ -16,6 +16,8 @@ import {AuthService} from './services/auth/auth.service'
 import {DropdownModule,AlertModule} from 'ng2-bootstrap'
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import {ConnectionService} from './connection.service';
+import {UserService} from './user.service';
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyCvN9K2cdfUf4H8BIr8vqRhdtGV_ca2UIs',
@@ -48,7 +50,9 @@ const myFirebaseAuthConfig = {
 		provide: APP_BASE_HREF,
 		// useValue: '<%= APP_BASE %>'
 		useValue: '/'
-	},AuthService],
+	}, ConnectionService
+	, UserService
+	,AuthService],
 	bootstrap: [AppComponent]
 
 })

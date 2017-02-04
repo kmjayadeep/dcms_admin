@@ -19,6 +19,6 @@ export class AppComponent {
 	public constructor(viewContainerRef:ViewContainerRef, af : AngularFire) {
 		// You need this small hack in order to catch application root view container ref
 		this.viewContainerRef = viewContainerRef;
-		console.log('Environment config', Config);
+		// console.log('Environment config', Config);
 	}
 }
