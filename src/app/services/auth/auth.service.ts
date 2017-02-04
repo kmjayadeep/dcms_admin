@@ -23,6 +23,7 @@ export class AuthService {
 				.getToken(true)
 				.then(idToken => {
 					this.idToken = idToken;
+					console.log(idToken);
 				}).catch(function(error){
 					console.log(error);
 				})
