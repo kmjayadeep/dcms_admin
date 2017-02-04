@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+.google-login{
+	background: #d9534f !important
+}
+
+.facebook-login{
+	background: #0275d8 !important
+}

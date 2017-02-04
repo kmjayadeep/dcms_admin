@@ -15,7 +15,8 @@ export class UserService extends ConnectionService {
 
 	constructor(protected http: Http) {
 		super();
-		this.user = JSON.parse(localStorage['profile'])
+		if(localStorage['profile'])
+			this.user = JSON.parse(localStorage['profile'])
 	}
 
 	login(idToken): any {
