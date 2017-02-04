@@ -32,9 +32,9 @@ export class AuthService {
 			}
 	 	});
 	}
-	login(){
+	login(provider){
 		return this.af.auth.login({
-			provider:AuthProviders.Google,
+			provider:provider=='google'? AuthProviders.Google: AuthProviders.Facebook,
 			method:AuthMethods.Popup
 		})
 	}

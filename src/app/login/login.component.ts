@@ -24,8 +24,8 @@ export class LoginComponent {
 		
 	}
 
-	login(){
-		this.authService.login()
+	login(provider){
+		this.authService.login(provider)
 		.then(data=>{
 			return this.userService.login(this.authService.idToken)
 			.map(res=>res.json())
