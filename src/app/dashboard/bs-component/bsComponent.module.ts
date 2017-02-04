@@ -27,13 +27,13 @@ import { BSComponentComponent } from './bsComponent.component';
 		AlertModule,
 		ButtonsModule,
 		DropdownModule,
-		PaginationModule,
-		ProgressbarModule,
-		RatingModule,
-		TabsModule,
-		TooltipModule,
-		ModalModule,
-		TypeaheadModule
+		PaginationModule.forRoot(),
+		ProgressbarModule.forRoot(),
+		RatingModule.forRoot(),
+		TabsModule.forRoot(),
+		TooltipModule.forRoot(),
+		ModalModule.forRoot(),
+		TypeaheadModule.forRoot()
 	],
     declarations: [BSComponentComponent],
     exports: [BSComponentComponent]
