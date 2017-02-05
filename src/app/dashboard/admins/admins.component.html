@@ -30,21 +30,38 @@
                             <th>Name</th>
                             <th>Picture</th>
                             <th>Email</th>
-                            <th>Event Email</th>
+                            <th>Drishti Email</th>
+                            <th>Role</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let admin of admins">
                             <td>{{admin.name}}</td>
-                            <td><img class="profile-pic img-thumbnail" [src]="admin.picture"/></td>
+                            <td><img class="profile-pic img-thumbnail" [src]="admin.picture" /></td>
                             <td>{{admin.email}}</td>
                             <td>{{admin.eventMail}}</td>
-                            <td>{{admin.actions}}</td>
+                            <td>{{getStatus(admin.status)}}</td>
+                            <td>
+                                <button type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil" (click)="view(admin.id)"></i> Edit</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="admin">
+        <div class="col-md-12">
+            <form role="form">
+                <fieldset class="form-group">
+                    <label>Name</label>r
+                    <input type="text" class="form-control" [(ngModel)]="admin.name" name="name" />
+                </fieldset>
+            </form>
+            <button class="btn btm-info">
+                <i class="fa fa-save"></i> Save
+            </button>
         </div>
     </div>
 </div>

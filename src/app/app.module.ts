@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { FormsModule} from '@angular/forms'
+
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 
@@ -19,6 +21,7 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import {ConnectionService} from './services/connection.service';
 import {UserService} from './services/user.service';
 
+
 export const firebaseConfig = {
 	apiKey: 'AIzaSyCvN9K2cdfUf4H8BIr8vqRhdtGV_ca2UIs',
     authDomain: 'drishti-bd782.firebaseapp.com',
@@ -34,6 +37,7 @@ const myFirebaseAuthConfig = {
 
 @NgModule({
 	imports: [
+	    FormsModule,
 		BrowserModule,
 		HttpModule,
 		RouterModule.forRoot(routes),
@@ -43,7 +47,7 @@ const myFirebaseAuthConfig = {
 		SharedModule.forRoot(),
 		DropdownModule.forRoot(),
 		AlertModule.forRoot(),
-	    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
+	    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
 	],
 	declarations: [AppComponent],
 	providers: [{

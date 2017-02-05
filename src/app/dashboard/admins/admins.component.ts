@@ -8,16 +8,17 @@ import {UserService} from '../../services/user.service'
 })
 export class AdminsComponent implements OnInit {
 
-	error = ''
-	message = ''
+	error = null
+	message = null
 	admins = []
+	admin = null
 
 	constructor(private userService:UserService) {
 	}
 
 	getAdmins(){
-		this.error = ''
-		this.message = ''
+		this.error = null
+		this.message = null
 		this.userService.getAdmins()
 		.then(admins=>{
 			console.log(admins)
@@ -29,6 +30,27 @@ export class AdminsComponent implements OnInit {
 		})
 	}
 
+	getStatus(status){
+		if(status==0)
+			return 'Not Verified';
+		else if(status==10)
+			return 'SuperAdmin';
+		else if(status==9)
+			return 'Admin';
+	}
+
+	view(adminId){
+		this.error = null
+		this.admin = null
+		this.userService.getAdmin(adminId)
+			.then(admin=>{
+				console.log(admin)
+				this.admin = admin
+			})
+			.catch(err=>{
+				this.error = 'Unable to load Admin details'
+			})
+	}
 
 	ngOnInit() {
 		this.getAdmins()
