@@ -1,3 +1,50 @@
-<p>
-  admins works!
-</p>
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <h2 class="page-header">
+                Admins
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-user"></i> Admins
+                </li>
+            </ol>
+            <div class="alert alert-warning" role="alert" *ngIf="error">
+                {{error}}
+            </div>
+            <div class="alert alert-info" role="alert" *ngIf="message">
+                {{message}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-block">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Picture</th>
+                            <th>Email</th>
+                            <th>Event Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let admin of admins">
+                            <td>{{admin.name}}</td>
+                            <td><img class="profile-pic img-thumbnail" [src]="admin.picture"/></td>
+                            <td>{{admin.email}}</td>
+                            <td>{{admin.eventMail}}</td>
+                            <td>{{admin.actions}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
