@@ -18,9 +18,12 @@ import {TopNavComponent} from '../shared/index';
 import {SidebarComponent} from '../shared/index';
 import { AdminsComponent } from './admins/admins.component';
 
+import {FormsModule} from '@angular/forms'
+
 
 @NgModule({
     imports: [
+        FormsModule,
         CommonModule,
     	RouterModule,
     	DropdownModule,
