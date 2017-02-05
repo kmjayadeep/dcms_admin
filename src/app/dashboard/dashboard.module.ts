@@ -5,7 +5,6 @@ import { DropdownModule } from 'ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap';
 
 import { HomeModule } from './home/home.module';
-import { ChartModule } from './charts/chart.module';
 import { BlankPageModule } from './blank-page/blankPage.module';
 import { TableModule } from './tables/table.module';
 import { FormModule } from './forms/forms.module';
@@ -27,7 +26,6 @@ import { AdminsComponent } from './admins/admins.component';
     	DropdownModule,
         ModalModule,
     	HomeModule,
-        ChartModule,
         TableModule,
         FormModule,
         GridModule,
