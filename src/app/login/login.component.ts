@@ -18,20 +18,27 @@ declare var firebase : any;
 
 export class LoginComponent { 
 
+	error:string = ''
+
 	public constructor(private authService:AuthService,private router:Router, private userService: UserService){
 		
 	}
 
 	login(provider){
+		this.error = ''
 		this.authService.login(provider)
 		.then(data=>{
 			return this.userService.login(this.authService.idToken)
 		}).then(user=>{
 			console.log(user)
-			this.router.navigate(['dashboard/home'])
+			if(user.status)
+				this.router.navigate(['dashboard/home'])
+			else
+				this.error = 'Account Not verified by administrator'
 		})
 		.catch(err=>{
 			console.log(err)
+			this.error = 'Unable to login'
 		})
 	}
 
