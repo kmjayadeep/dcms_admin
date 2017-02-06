@@ -19,6 +19,7 @@ export class AdminsComponent implements OnInit {
 	getAdmins(){
 		this.error = null
 		this.message = null
+		this.admin = null
 		this.userService.getAdmins()
 		.then(admins=>{
 			console.log(admins)
@@ -42,6 +43,10 @@ export class AdminsComponent implements OnInit {
 			return 'SuperAdmin';
 		else if(status==9)
 			return 'Admin';
+		else if(status==8)
+			return 'Event Coordinator';
+		else if(status==7)
+			return 'Registration Desk';
 	}
 
 	changeStatus(status){

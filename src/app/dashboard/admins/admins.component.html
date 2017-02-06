@@ -23,10 +23,10 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <data-table [items]="admins" [itemCount]="admins.length" (reload)="reloadAdmins()" [pagination]="false" [indexColumn]="false" [selectColumn]="true" [multiSelect]="true">
+            <data-table [items]="admins" [itemCount]="admins.length" (reload)="reloadAdmins()" [pagination]="false" [indexColumn]="false" [multiSelect]="true">
                 <data-table-column property="name" header="Name" sortable="true">
                 </data-table-column>
-                <data-table-column property="picture" header="Picture" sortable="false">
+                <data-table-column property="picture" header="Picture" sortable="false" width="100px">
                     <template #dataTableCell let-item="item">
                         <img class="profile-pic img-thumbnail" [src]="item.picture" />
                     </template>
@@ -35,12 +35,12 @@
                 </data-table-column>
                 <data-table-column property="eventMail" header="Drishti Email">
                 </data-table-column>
-                <data-table-column header="Role">
+                <data-table-column header="Role" width="120px">
                     <template #dataTableCell let-item="item">
                         {{getStatus(item.status)}}
                     </template>
                 </data-table-column>
-                <data-table-column header="Actions">
+                <data-table-column header="Actions" width="120px">
                     <template #dataTableCell let-item="item">
                         <button type="button" class="btn btn-info btn-sm" (click)="view(item.id)"><i class="fa fa-pencil"></i> Edit</button>
                     </template>
@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <label for="exampleSelect1">Role</label>
                         <select class="form-control" id="exampleSelect1" [ngModel]="admin.status" name="status" (change)="changeStatus($event.target.value)">
-                            <option value="0">Blocked</option>
+                            <option value="0">Not Verified</option>
                             <option value="7">Registration Desk</option>
                             <option value="8">Event Coordinator</option>
                             <option value="9">Admin</option>
