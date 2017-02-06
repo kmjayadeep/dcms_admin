@@ -168,6 +168,12 @@ amdefine@1.0.0, amdefine@>=0.0.4:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.0.tgz#fd17474700cb5cc9c2b709f0be9d23ce3c198c33"
 
+angular-2-data-table-bootstrap4@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/angular-2-data-table-bootstrap4/-/angular-2-data-table-bootstrap4-0.1.6.tgz#2f35c0f0c7dc98e13f1a5c72e990a4d596a17045"
+  dependencies:
+    replace "^0.3.0"
+
 angular-cli@1.0.0-beta.26:
   version "1.0.0-beta.26"
   resolved "https://registry.yarnpkg.com/angular-cli/-/angular-cli-1.0.0-beta.26.tgz#f366c9060368a4cda65ded09caa8f3251efc78ec"
@@ -891,6 +897,10 @@ colormin@^1.0.5:
     color "^0.11.0"
     css-color-names "0.0.4"
     has "^1.0.1"
+
+colors@0.5.x:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-0.5.1.tgz#7d0023eaeb154e8ee9fce75dcb923d0ed1667774"
 
 colors@1.0.3:
   version "1.0.3"
@@ -3320,6 +3330,13 @@ minimatch@2.x:
   dependencies:
     brace-expansion "^1.0.0"
 
+minimatch@~0.2.9:
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-0.2.14.tgz#c74e780574f63c6f9a090e90efbe6ef53a6a756a"
+  dependencies:
+    lru-cache "2"
+    sigmund "~1.0.0"
+
 minimist@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
@@ -3488,6 +3505,13 @@ node-sass@^4.1.1:
 node-status-codes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
+
+nomnom@1.6.x:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/nomnom/-/nomnom-1.6.2.tgz#84a66a260174408fc5b77a18f888eccc44fb6971"
+  dependencies:
+    colors "0.5.x"
+    underscore "~1.4.4"
 
 "nopt@2 || 3", nopt@3.x, nopt@^3.0.1, nopt@~3.0.6:
   version "3.0.6"
@@ -4439,6 +4463,14 @@ replace-ext@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-0.0.1.tgz#29bbd92078a739f0bcce2b4ee41e837953522924"
 
+replace@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/replace/-/replace-0.3.0.tgz#60081721188658595ab6a794eb7fedcb4c8d39c7"
+  dependencies:
+    colors "0.5.x"
+    minimatch "~0.2.9"
+    nomnom "1.6.x"
+
 request@2, request@^2.61.0, request@^2.72.0, request@^2.78.0, request@^2.79.0:
   version "2.79.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
@@ -5219,6 +5251,10 @@ ultron@1.0.x:
 underscore.string@~2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/underscore.string/-/underscore.string-2.3.3.tgz#71c08bf6b428b1133f37e78fa3a21c82f7329b0d"
+
+underscore@~1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.4.4.tgz#61a6a32010622afa07963bf325203cf12239d604"
 
 uniq@^1.0.1:
   version "1.0.1"

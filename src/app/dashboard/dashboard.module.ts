@@ -20,6 +20,9 @@ import { AdminsComponent } from './admins/admins.component';
 
 import {FormsModule} from '@angular/forms'
 
+import {DataTableModule} from 'angular-2-data-table-bootstrap4'
+
+
 
 @NgModule({
     imports: [
@@ -34,7 +37,8 @@ import {FormsModule} from '@angular/forms'
         GridModule,
     	BSComponentModule,
         BSElementModule,
-        BlankPageModule
+        BlankPageModule,
+        DataTableModule
     ],
     declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent],
     exports: [DashboardComponent, TopNavComponent, SidebarComponent]

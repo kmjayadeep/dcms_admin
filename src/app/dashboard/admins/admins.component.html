@@ -23,32 +23,29 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-block">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Picture</th>
-                            <th>Email</th>
-                            <th>Drishti Email</th>
-                            <th>Role</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let admin of admins">
-                            <td>{{admin.name}}</td>
-                            <td><img class="profile-pic img-thumbnail" [src]="admin.picture" /></td>
-                            <td>{{admin.email}}</td>
-                            <td>{{admin.eventMail}}</td>
-                            <td>{{getStatus(admin.status)}}</td>
-                            <td>
-                                <button type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil" (click)="view(admin.id)"></i> Edit</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <data-table [items]="admins" [itemCount]="admins.length" (reload)="reloadAdmins()" [pagination]="false" [indexColumn]="false" [selectColumn]="true" [multiSelect]="true">
+                <data-table-column property="name" header="Name" sortable="true">
+                </data-table-column>
+                <data-table-column property="picture" header="Picture" sortable="false">
+                    <template #dataTableCell let-item="item">
+                        <img class="profile-pic img-thumbnail" [src]="item.picture" />
+                    </template>
+                </data-table-column>
+                <data-table-column property="email" header="Email">
+                </data-table-column>
+                <data-table-column property="eventMail" header="Drishti Email">
+                </data-table-column>
+                <data-table-column header="Role">
+                    <template #dataTableCell let-item="item">
+                        {{getStatus(item.status)}}
+                    </template>
+                </data-table-column>
+                <data-table-column header="Actions">
+                    <template #dataTableCell let-item="item">
+                        <button type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil" (click)="view(admin.id)"></i> Edit</button>
+                    </template>
+                </data-table-column>
+            </data-table>
         </div>
     </div>
     <div class="row" *ngIf="admin">

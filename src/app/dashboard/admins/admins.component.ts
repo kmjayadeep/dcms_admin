@@ -30,6 +30,10 @@ export class AdminsComponent implements OnInit {
 		})
 	}
 
+	reloadAdmins(){
+		console.log('reloading')
+	}
+
 	getStatus(status){
 		if(status==0)
 			return 'Not Verified';
@@ -40,6 +44,7 @@ export class AdminsComponent implements OnInit {
 	}
 
 	view(adminId){
+		console.log('viewing')
 		this.error = null
 		this.admin = null
 		this.userService.getAdmin(adminId)
