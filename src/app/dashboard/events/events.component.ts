@@ -15,10 +15,9 @@ export class EventsComponent{
 	event = null
 
 	constructor(private eventService:EventService) {
-		this.reloadEvents()
 	}
 
-	getAdmins(){
+	getEvents(){
 		this.error = null
 		this.message = null
 		this.event = null
@@ -35,7 +34,42 @@ export class EventsComponent{
 
 	reloadEvents(){
 		console.log('reloading')
-		this.getAdmins()
+		this.getEvents()
+	}
+
+	view(eventId){
+		this.error = null
+		this.message = null
+		this.event = null
+		this.eventService.getEvent(eventId)
+		.then(event=>{
+			console.log(event)
+			this.event = event
+		})
+		.catch(err=>{
+			this.error = 'Unable to load event'
+		})
+	}
+
+	save(){
+		console.log(this.event)
+		this.error = null
+		this.message = null
+		this.eventService.updateEvent(this.event)
+		.then(event=>{
+			console.log(event)
+			this.message = 'Event Updated Successfully'
+			this.event = null
+			this.reloadEvents()
+		})
+		.catch(err=>{
+			console.log(err)
+			this.error = 'Unable to update event'
+		})
+	}
+
+	changeGroup(group){
+		this.event.group = group
 	}
 
 }

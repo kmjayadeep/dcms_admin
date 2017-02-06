@@ -1,3 +1,107 @@
-<p>
-  events works!
-</p>
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <h2 class="page-header">
+                Events
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-user"></i> Events
+                </li>
+            </ol>
+            <div class="alert alert-warning" role="alert" *ngIf="error">
+                {{error}}
+            </div>
+            <div class="alert alert-info" role="alert" *ngIf="message">
+                {{message}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <data-table [items]="events" [itemCount]="events.length" (reload)="reloadEvents()" [pagination]="true" [indexColumn]="false" [multiSelect]="true">
+                <data-table-column property="name" header="Name" sortable="true">
+                </data-table-column>
+                <data-table-column property="image" header="Image" sortable="false" width="100px">
+                    <template #dataTableCell let-item="item">
+                        <img *ngIf="item.image" class="img-thumbnail" [src]="item.image" />
+                    </template>
+                </data-table-column>
+                <data-table-column property="description" header="Description">
+                </data-table-column>
+                <data-table-column property="format" header="Event Format">
+                </data-table-column>
+                <data-table-column header="Group Event?" width="120px">
+                    <template #dataTableCell let-item="item">
+                        {{item.group==0?'Yes':'No'}}
+                    </template>
+                </data-table-column>
+                <data-table-column header="Actions" width="120px">
+                    <template #dataTableCell let-item="item">
+                        <button type="button" class="btn btn-info btn-sm" (click)="view(item.id)"><i class="fa fa-pencil"></i> Edit</button>
+                    </template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+    <br/>
+    <div class="row" *ngIf="event">
+        <div class="col-md-12">
+            <form role="form" (submit)="save()">
+                <fieldset class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="event.name" name="name" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control" [(ngModel)]="event.description" name="description" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Event Format</label>
+                    <input type="text" class="form-control" [(ngModel)]="event.format" name="format"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Problem Statement</label>
+                    <input type="text" class="form-control" [(ngModel)]="event.problemStatement" name="problem"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>First Prize</label>
+                    <input type="number" class="form-control" [(ngModel)]="event.prize1" name="prize1"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Second Prize</label>
+                    <input type="number" class="form-control" [(ngModel)]="event.prize2" name="prize2"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Third Prize</label>
+                    <input type="number" class="form-control" [(ngModel)]="event.prize3" name="prize3"/>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="exampleSelect1">Participation Type</label>
+                        <select class="form-control" id="exampleSelect1" [ngModel]="event.group" name="group" (change)="changeGroup($event.target.value)">
+                            <option value="0">Individual Event</option>
+                            <option value="1">Group Event</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group" *ngIf="event.group==0">
+                    <label>Maxmimum Participants (leave 0 for unlimited)</label>
+                    <input type="number" class="form-control" [(ngModel)]="event.maxParticipants" name="maxParticipants"/>
+                </fieldset>
+                <fieldset class="form-group" *ngIf="event.group==1">
+                    <label>Maxmimum Groups (leave 0 for unlimited)</label>
+                    <input type="number" class="form-control" [(ngModel)]="event.maxGroups" name="maxGroups"/>
+                </fieldset>
+                <br/>
+                <button class="btn btn-info" type="submit" role="input">
+                    <i class="fa fa-save"></i> Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

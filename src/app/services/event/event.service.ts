@@ -29,5 +29,66 @@ export class EventService extends ConnectionService{
 			.toPromise()
 		})
 	}
+
+	getEvent(eventId){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.get(this.eventApi+'/'+eventId,{
+				headers:headers
+			})
+			.map(res=>res.json())
+			.toPromise()
+		})
+	}
+
+	deleteEvent(eventId){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.delete(this.eventApi+'/'+eventId,{
+				headers:headers
+			})
+			.map(res=>res.json())
+			.toPromise()
+		})
+	}
+
+	updateEvent(event){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.post(this.eventApi+'/'+event.id,event,{
+				headers:headers
+			})
+			.map(res=>res.json())
+			.toPromise()
+		})
+	}
+
+	addEvent(event){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.put(this.eventApi,event,{
+				headers:headers
+			})
+			.map(res=>res.json())
+			.toPromise()
+		})
+	}
+
+	updateAdmins(eventId,admins){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.put(this.eventApi+'/admin/'+eventId,admins,{
+				headers:headers
+			})
+			.map(res=>res.json())
+			.toPromise()
+		})
+	}
+
 	
 }
