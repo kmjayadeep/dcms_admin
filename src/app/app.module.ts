@@ -22,6 +22,8 @@ import {ConnectionService} from './services/connection.service';
 import {UserService} from './services/user.service';
 
 
+import {DataTableModule} from 'angular-2-data-table-bootstrap4'
+
 export const firebaseConfig = {
 	apiKey: 'AIzaSyCvN9K2cdfUf4H8BIr8vqRhdtGV_ca2UIs',
     authDomain: 'drishti-bd782.firebaseapp.com',
@@ -48,6 +50,7 @@ const myFirebaseAuthConfig = {
 		DropdownModule.forRoot(),
 		AlertModule.forRoot(),
 	    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+	    DataTableModule
 	],
 	declarations: [AppComponent],
 	providers: [{
