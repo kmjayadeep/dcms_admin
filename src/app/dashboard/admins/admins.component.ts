@@ -32,6 +32,7 @@ export class AdminsComponent implements OnInit {
 
 	reloadAdmins(){
 		console.log('reloading')
+		this.getAdmins()
 	}
 
 	getStatus(status){
@@ -58,7 +59,7 @@ export class AdminsComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.getAdmins()
+		//this.getAdmins()
 	}
 
 }
