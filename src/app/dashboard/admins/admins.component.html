@@ -48,17 +48,46 @@
             </data-table>
         </div>
     </div>
+    <br/>
     <div class="row" *ngIf="admin">
         <div class="col-md-12">
-            <form role="form">
+            <form role="form" (submit)="save()">
                 <fieldset class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" [(ngModel)]="admin.name" name="name" />
                 </fieldset>
+                <fieldset class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" [(ngModel)]="admin.phone" name="phone" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" [(ngModel)]="admin.email" name="email" disabled="true" />
+                </fieldset>
+                <fieldset>
+                    <label>Drishti Email</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="eventMail" aria-describedby="basic-addon2" [(ngModel)]="admin.eventMail">
+                        <span class="input-group-addon" id="basic-addon2">@drishticet.org</span>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="exampleSelect1">Role</label>
+                        <select class="form-control" id="exampleSelect1" [ngModel]="admin.status" name="status" (change)="changeStatus($event.target.value)">
+                            <option value="0">Blocked</option>
+                            <option value="7">Registration Desk</option>
+                            <option value="8">Event Coordinator</option>
+                            <option value="9">Admin</option>
+                            <option value="10">SuperUser</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <br/>
+                <button class="btn btn-info" type="submit" role="input">
+                    <i class="fa fa-save"></i> Save
+                </button>
             </form>
-            <button class="btn btn-info">
-                <i class="fa fa-save"></i> Save
-            </button>
         </div>
     </div>
 </div>

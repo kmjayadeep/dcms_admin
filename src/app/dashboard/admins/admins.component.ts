@@ -44,6 +44,26 @@ export class AdminsComponent implements OnInit {
 			return 'Admin';
 	}
 
+	changeStatus(status){
+		this.admin.status = status
+	}
+
+	save(){
+		this.error = null
+		this.message = null
+		console.log(this.admin)
+		this.userService.updateAdmin(this.admin)
+			.then(res=>{
+				this.message = 'Saved Successfully'
+				this.admin = null
+				this.reloadAdmins()
+			})
+			.catch(err=>{
+				console.log(err)
+				this.error = 'Unable to save'
+			})
+	}
+
 	view(adminId){
 		console.log('viewing')
 		this.error = null

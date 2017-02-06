@@ -62,4 +62,16 @@ export class UserService extends ConnectionService {
 		})
 	}
 
+	updateAdmin(admin){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.post(this.adminApi+'/'+admin.id,admin,{
+				headers:headers
+			})
+			.map(res=>res.json())
+			.toPromise()
+		})
+	}
+
 }
