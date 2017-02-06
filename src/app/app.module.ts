@@ -19,7 +19,10 @@ import {DropdownModule,AlertModule} from 'ng2-bootstrap'
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import {ConnectionService} from './services/connection.service';
+
 import {UserService} from './services/user.service';
+
+import {EventService} from './services/event/event.service';
 
 
 import {DataTableModule} from 'angular-2-data-table-bootstrap4'
@@ -59,7 +62,9 @@ const myFirebaseAuthConfig = {
 		useValue: '/'
 	}, ConnectionService
 	, UserService
-	,AuthService],
+	,AuthService
+	,EventService
+	],
 	bootstrap: [AppComponent]
 
 })
