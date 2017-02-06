@@ -8,6 +8,7 @@ import { GridRoutes } from './grid/index';
 import { BSComponentRoutes } from './bs-component/index';
 import { BSElementRoutes } from './bs-element/index';
 import { AdminsRoutes} from './admins/index'
+import { EventsRoutes} from './events/index'
 
 import { DashboardComponent } from './index';
 
@@ -18,6 +19,7 @@ export const DashboardRoutes: Route[] = [
     children: [
     ...HomeRoutes,
     ...AdminsRoutes,
+    ...EventsRoutes,
     ...BSComponentRoutes,
     ...TableRoutes,
     ...BlankPageRoutes,
