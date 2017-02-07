@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col-xl-12">
             <h2 class="page-header">
-                Events
-            </h2>
+				Events
+			</h2>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
@@ -48,10 +48,10 @@
             </data-table>
         </div>
     </div>
-    <br/>
-    <br/>
     <div class="row" *ngIf="event">
         <div class="col-lg-6">
+            <br/>
+            <br/>
             <form role="form" (submit)="save()">
                 <fieldset class="form-group">
                     <label>Name</label>
@@ -63,30 +63,28 @@
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Event Format</label>
-                    <input type="text" class="form-control" [(ngModel)]="event.format" name="format"/>
+                    <input type="text" class="form-control" [(ngModel)]="event.format" name="format" />
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Problem Statement</label>
-                    <input type="text" class="form-control" [(ngModel)]="event.problemStatement" name="problem"/>
+                    <input type="text" class="form-control" [(ngModel)]="event.problemStatement" name="problem" />
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Event Image</label>
-
                     <img [src]="event.image" *ngIf="event.image" class="img-thumbnail img-event" />
-
-                    <input type="file" class="form-control" (change)="fileChange($event)" name="image"/>
+                    <input type="file" class="form-control" (change)="fileChange($event)" name="image" />
                 </fieldset>
                 <fieldset class="form-group">
                     <label>First Prize</label>
-                    <input type="number" class="form-control" [(ngModel)]="event.prize1" name="prize1"/>
+                    <input type="number" class="form-control" [(ngModel)]="event.prize1" name="prize1" />
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Second Prize</label>
-                    <input type="number" class="form-control" [(ngModel)]="event.prize2" name="prize2"/>
+                    <input type="number" class="form-control" [(ngModel)]="event.prize2" name="prize2" />
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Third Prize</label>
-                    <input type="number" class="form-control" [(ngModel)]="event.prize3" name="prize3"/>
+                    <input type="number" class="form-control" [(ngModel)]="event.prize3" name="prize3" />
                 </fieldset>
                 <fieldset>
                     <div class="form-group">
@@ -99,11 +97,11 @@
                 </fieldset>
                 <fieldset class="form-group" *ngIf="event.group==0">
                     <label>Maxmimum Participants (leave 0 for unlimited)</label>
-                    <input type="number" class="form-control" [(ngModel)]="event.maxParticipants" name="maxParticipants"/>
+                    <input type="number" class="form-control" [(ngModel)]="event.maxParticipants" name="maxParticipants" />
                 </fieldset>
                 <fieldset class="form-group" *ngIf="event.group==1">
                     <label>Maxmimum Groups (leave 0 for unlimited)</label>
-                    <input type="number" class="form-control" [(ngModel)]="event.maxGroups" name="maxGroups"/>
+                    <input type="number" class="form-control" [(ngModel)]="event.maxGroups" name="maxGroups" />
                 </fieldset>
                 <br/>
                 <button class="btn btn-info" type="submit" role="input">
@@ -112,7 +110,30 @@
             </form>
         </div>
         <div class="col-lg-6">
-        	
+            <br/>
+            <br/>
+            <h5>Event Coordinators</h5>
+            <br/>
+            <ul class="list-group">
+                <li class="list-group-item event-admins" *ngFor="let admin of event.admins">{{admin.name}}<i class="fa fa-close" (click)="deleteAdmin(admin)"></i></li>
+            </ul>
+            <br/>
+            <div class="row">
+                <div class="col-xs-8">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="exampleSelect2">Add Admin</label>
+                            <select class="form-control" id="exampleSelect2" [(ngModel)]="eventAdmin" (change)="eventAdmin=$event.target.value" name="eventAdmin">
+                                <option *ngFor="let admin of event.allAdmins" [value]="admin.id">{{admin.name}}</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-xs-4">
+                    <button class="btn btn-primary add-button" (click)="addEventAdmin(eventAdmin)">Add</button>
+                </div>
+            </div>
+            <br/>
+            <button class="btn btn-info" (click)="saveEventAdmins()"><i class="fa fa-save" ></i> Save</button>
         </div>
     </div>
-</div>

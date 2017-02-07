@@ -13,6 +13,7 @@ export class EventsComponent{
 	message = null
 	events = []
 	event = null
+	eventAdmin = null
 
 	constructor(private eventService:EventService) {
 	}
@@ -88,6 +89,34 @@ export class EventsComponent{
 		})
 	}
 
+	saveEventAdmins(){
+		this.message = null
+		this.error = null
+		let admins = this.event.admins.map(ad=>ad.id)
+		this.eventService.updateAdmins(this.event.id,admins)
+		.then(()=>{
+			this.message = 'Event coordinators updated'
+			this.reloadEvents()
+		})
+		.catch(err=>{
+			console.log(err)
+			this.error = 'Unable to edit event coordinators'
+		})
+	}
+
+	addEventAdmin(adminId){
+		if(!adminId)
+			return
+		let admin = this.event.allAdmins.find(admin=>admin.id==adminId)
+		console.log(admin)
+		this.event.admins.push(admin)
+		this.event.allAdmins = this.event.allAdmins.filter(ad=>ad.id!=adminId)
+	}
+
+	deleteAdmin(admin){
+		this.event.admins = this.event.admins.filter(ad=>ad.id!=admin.id)
+		this.event.allAdmins.push(admin)
+	}
 
 	fileChange($event){
 		console.log($event.target.files)
