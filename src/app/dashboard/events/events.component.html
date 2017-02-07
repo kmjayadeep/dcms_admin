@@ -88,7 +88,7 @@
                 <fieldset>
                     <div class="form-group">
                         <label for="exampleSelect1">Participation Type</label>
-                        <select class="form-control" id="exampleSelect1" [ngModel]="event.group" name="group" (change)="changeGroup($event.target.value)">
+                        <select class="form-control" id="exampleSelect1" [(ngModel)]="event.group" name="group" (change)="changeGroup($event.target.value)">
                             <option value="0">Individual Event</option>
                             <option value="1">Group Event</option>
                         </select>

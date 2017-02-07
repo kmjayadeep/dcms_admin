@@ -74,7 +74,7 @@
                 <fieldset>
                     <div class="form-group">
                         <label for="exampleSelect1">Role</label>
-                        <select class="form-control" id="exampleSelect1" [ngModel]="admin.status" name="status" (change)="changeStatus($event.target.value)">
+                        <select class="form-control" id="exampleSelect1" [(ngModel)]="admin.status" name="status" (change)="changeStatus($event.target.value)">
                             <option value="0">Not Verified</option>
                             <option value="7">Registration Desk</option>
                             <option value="8">Event Coordinator</option>

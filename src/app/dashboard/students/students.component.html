@@ -35,6 +35,8 @@
                 </data-table-column>
                 <data-table-column property="score" header="Score">
                 </data-table-column>
+                <data-table-column property="accomodation" header="Accomodation">
+                </data-table-column>
                 <data-table-column header="Actions" width="120px">
                     <template #dataTableCell let-item="item">
                         <button type="button" class="btn btn-info btn-sm" (click)="view(item.id)"><i class="fa fa-pencil"></i> Edit</button>
@@ -43,4 +45,58 @@
             </data-table>
         </div>
     </div>
-</div>
+    <div class="row" *ngIf="student">
+        <div class="col-lg-6">
+            <br/>
+            <br/>
+            <form role="form" (submit)="save()">
+                <fieldset class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="student.name" name="name" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" [(ngModel)]="student.phone" name="phone" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Accomodation</label>
+                    <select class="form-control" id="exampleSelect1" [(ngModel)]="student.accomodation" name="accomodation" (change)="student.accomodation=$event.target.value">
+                        <option value="none">None</option>
+                        <option value="male">Male Accomodation</option>
+                        <option value="female">Female Accomodation</option>
+                    </select>
+                </fieldset>
+                <br/>
+                <button class="btn btn-info" type="submit" role="input">
+                    <i class="fa fa-save"></i> Save
+                </button>
+            </form>
+        </div>
+        <div class="col-lg-6" *ngIf="false">
+            <br/>
+            <br/>
+            <h5>Event Coordinators</h5>
+            <br/>
+            <ul class="list-group">
+                <li class="list-group-item event-admins" *ngFor="let admin of event.admins">{{admin.name}}<i class="fa fa-close" (click)="deleteAdmin(admin)"></i></li>
+            </ul>
+            <br/>
+            <div class="row">
+                <div class="col-xs-8">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="exampleSelect2">Add Admin</label>
+                            <select class="form-control" id="exampleSelect2" [(ngModel)]="eventAdmin" (change)="eventAdmin=$event.target.value" name="eventAdmin">
+                                <option *ngFor="let admin of event.allAdmins" [value]="admin.id">{{admin.name}}</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-xs-4">
+                    <button class="btn btn-primary add-button" (click)="addEventAdmin(eventAdmin)">Add</button>
+                </div>
+            </div>
+            <br/>
+            <button class="btn btn-info" (click)="saveEventAdmins()"><i class="fa fa-save"></i> Save</button>
+        </div>
+    </div>
