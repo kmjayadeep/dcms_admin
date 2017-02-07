@@ -21,7 +21,8 @@ import { AdminsComponent } from './admins/admins.component';
 import {FormsModule} from '@angular/forms'
 
 import {DataTableModule} from 'angular-2-data-table-bootstrap4';
-import { EventsComponent } from './events/events.component'
+import { EventsComponent } from './events/events.component';
+import { StudentsComponent } from './students/students.component'
 
 
 
@@ -41,7 +42,7 @@ import { EventsComponent } from './events/events.component'
         BlankPageModule,
         DataTableModule
     ],
-    declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent, EventsComponent],
+    declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent, EventsComponent, StudentsComponent],
     exports: [DashboardComponent, TopNavComponent, SidebarComponent]
 })
 
