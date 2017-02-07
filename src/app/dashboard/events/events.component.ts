@@ -60,7 +60,10 @@ export class EventsComponent{
 		if(this.event.uploadImage){
 			this.message = 'Uploading Image'
 			promise = new Promise((res,rej)=>{
-				this.eventService.uploadPic(this.event.id,this.event.uploadImage)
+				let picId = Math.random()*1000000
+				if(this.event.id)
+					picId = this.event.id
+				this.eventService.uploadPic(picId,this.event.uploadImage)
 				.then(result=>{
 					console.log(result)
 					this.event.image = result
@@ -70,12 +73,14 @@ export class EventsComponent{
 					rej(err)
 				})
 			})
-
 		}else{
 			promise = new Promise((res,rej)=>res())
 		}
 		promise.then((res)=>{
-			return 	this.eventService.updateEvent(this.event)
+			if(this.event.id)
+				return 	this.eventService.updateEvent(this.event)
+			else
+				return this.eventService.addEvent(this.event);
 		})
 		.then(event=>{
 			console.log(event)
