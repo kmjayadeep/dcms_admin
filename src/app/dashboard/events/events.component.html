@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col-xl-12">
             <h2 class="page-header">
-				Events
-			</h2>
+                Events
+            </h2>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
@@ -60,15 +60,13 @@
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Description</label>
-                    <input type="text" class="form-control" [(ngModel)]="event.description" name="description" />
+                    <ckeditor [(ngModel)]="event.description" name="description" debounce="500">
+                    </ckeditor>
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Event Format</label>
-                    <input type="text" class="form-control" [(ngModel)]="event.format" name="format" />
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Problem Statement</label>
-                    <input type="text" class="form-control" [(ngModel)]="event.problemStatement" name="problem" />
+                    <ckeditor [(ngModel)]="event.format" name="format" debounce="500">
+                    </ckeditor>
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Event Image</label>
@@ -135,6 +133,6 @@
                 </div>
             </div>
             <br/>
-            <button class="btn btn-info" (click)="saveEventAdmins()"><i class="fa fa-save" ></i> Save</button>
+            <button class="btn btn-info" (click)="saveEventAdmins()"><i class="fa fa-save"></i> Save</button>
         </div>
     </div>

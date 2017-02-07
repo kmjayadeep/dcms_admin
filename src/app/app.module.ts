@@ -17,6 +17,9 @@ import {AuthService} from './services/auth/auth.service'
 
 import {DropdownModule,AlertModule} from 'ng2-bootstrap'
 
+import { CKEditorModule } from 'ng2-ckeditor';
+
+
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import {ConnectionService} from './services/connection.service';
 
@@ -53,7 +56,8 @@ const myFirebaseAuthConfig = {
 		DropdownModule.forRoot(),
 		AlertModule.forRoot(),
 	    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
-	    DataTableModule
+	    DataTableModule,
+	    CKEditorModule
 	],
 	declarations: [AppComponent],
 	providers: [{

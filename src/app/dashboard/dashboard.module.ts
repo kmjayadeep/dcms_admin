@@ -25,6 +25,8 @@ import { EventsComponent } from './events/events.component';
 import { StudentsComponent } from './students/students.component'
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { CKEditorModule } from 'ng2-ckeditor';
+
 
 import {firebaseConfig} from '../app.module'
 
@@ -50,7 +52,8 @@ const myFirebaseAuthConfig = {
         BSElementModule,
         BlankPageModule,
         DataTableModule,
-        AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig)
+        AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
+        CKEditorModule
     ],
     declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent, EventsComponent, StudentsComponent],
     exports: [DashboardComponent, TopNavComponent, SidebarComponent]
