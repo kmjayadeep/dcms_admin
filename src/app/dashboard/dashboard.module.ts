@@ -24,6 +24,15 @@ import {DataTableModule} from 'angular-2-data-table-bootstrap4';
 import { EventsComponent } from './events/events.component';
 import { StudentsComponent } from './students/students.component'
 
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+import {firebaseConfig} from '../app.module'
+
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Popup
+};
+
 
 
 @NgModule({
@@ -40,7 +49,8 @@ import { StudentsComponent } from './students/students.component'
     	BSComponentModule,
         BSElementModule,
         BlankPageModule,
-        DataTableModule
+        DataTableModule,
+        AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig)
     ],
     declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent, EventsComponent, StudentsComponent],
     exports: [DashboardComponent, TopNavComponent, SidebarComponent]

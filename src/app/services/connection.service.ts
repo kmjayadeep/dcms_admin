@@ -5,16 +5,18 @@ import * as Promise from 'bluebird'
 
 @Injectable()
 export class ConnectionService {
-	protected serverUrl = 'http://localhost:3000/dcms-admin';
-	private firebase:any
+	public serverUrl = 'http://localhost:3000/dcms-admin';
+	public firebase:any
 
 	constructor(public af: AngularFire, @Inject(FirebaseApp) firebase: any,http:Http) {
 		this.firebase = firebase
 	}
 
-	protected getHeaders(){
-		if(!this.firebase.auth().currentUser){
-			throw "not logged in";
+	public getHeaders(){
+		if(!this.firebase||!this.firebase.auth().currentUser){
+			return new Promise((res,rej)=>{
+				rej(new Error('Unable to login'))
+			})
 		}
 		return this.firebase.auth().currentUser.getToken(false)
 		.then(token=>{
