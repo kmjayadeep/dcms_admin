@@ -14,8 +14,8 @@ export class EventService extends ConnectionService{
 
 	private eventApi = this.serverUrl + '/event';
 
-	constructor(public af: AngularFire, @Inject(FirebaseApp) firebase: any, protected http: Http) {
-		super(af,firebase,http);
+	constructor(public af: AngularFire, @Inject(FirebaseApp) private firebaseApp: any, protected http: Http) {
+		super(af,firebaseApp,http);
 	}
 
 	getEvents(){
@@ -90,5 +90,17 @@ export class EventService extends ConnectionService{
 		})
 	}
 
+	uploadPic(eventId,file){
+		let path = 'images/event/'+eventId+file.name
+		let ref = this.firebaseApp.storage().ref().child(path)
+		return ref
+				.put(file)
+				.then(res=>{
+					return new Promise((resolve,reject)=>{
+						ref.getDownloadURL().then(url => resolve(url))
+							.catch(err=>reject(err))
+					})
+				})
+	}
 	
 }

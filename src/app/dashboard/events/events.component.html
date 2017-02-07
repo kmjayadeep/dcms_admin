@@ -49,8 +49,9 @@
         </div>
     </div>
     <br/>
+    <br/>
     <div class="row" *ngIf="event">
-        <div class="col-md-12">
+        <div class="col-lg-6">
             <form role="form" (submit)="save()">
                 <fieldset class="form-group">
                     <label>Name</label>
@@ -67,6 +68,13 @@
                 <fieldset class="form-group">
                     <label>Problem Statement</label>
                     <input type="text" class="form-control" [(ngModel)]="event.problemStatement" name="problem"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Event Image</label>
+
+                    <img [src]="event.image" *ngIf="event.image" class="img-thumbnail img-event" />
+
+                    <input type="file" class="form-control" (change)="fileChange($event)" name="image"/>
                 </fieldset>
                 <fieldset class="form-group">
                     <label>First Prize</label>
@@ -102,6 +110,9 @@
                     <i class="fa fa-save"></i> Save
                 </button>
             </form>
+        </div>
+        <div class="col-lg-6">
+        	
         </div>
     </div>
 </div>

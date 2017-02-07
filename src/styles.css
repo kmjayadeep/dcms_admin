@@ -10,3 +10,8 @@
 .profile-pic{
 	width: 50px;
 }
+.img-thumbnail.img-event{
+	display: block;
+    max-width: 300px;
+    margin: 1em auto;
+}

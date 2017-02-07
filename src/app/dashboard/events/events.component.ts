@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../services/event/event.service'
-
+import * as Promise from 'bluebird'
 
 @Component({
 	selector: 'app-events',
@@ -55,7 +55,27 @@ export class EventsComponent{
 		console.log(this.event)
 		this.error = null
 		this.message = null
-		this.eventService.updateEvent(this.event)
+		let promise = null
+		if(this.event.uploadImage){
+			this.message = 'Uploading Image'
+			promise = new Promise((res,rej)=>{
+				this.eventService.uploadPic(this.event.id,this.event.uploadImage)
+				.then(result=>{
+					console.log(result)
+					this.event.image = result
+					res(result)
+				})
+				.catch(err=>{
+					rej(err)
+				})
+			})
+
+		}else{
+			promise = new Promise((res,rej)=>res())
+		}
+		promise.then((res)=>{
+			return 	this.eventService.updateEvent(this.event)
+		})
 		.then(event=>{
 			console.log(event)
 			this.message = 'Event Updated Successfully'
@@ -66,6 +86,13 @@ export class EventsComponent{
 			console.log(err)
 			this.error = 'Unable to update event'
 		})
+	}
+
+
+	fileChange($event){
+		console.log($event.target.files)
+		if($event.target.files&&$event.target.files[0])
+			this.event.uploadImage = $event.target.files[0]
 	}
 
 	changeGroup(group){
