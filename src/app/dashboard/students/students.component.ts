@@ -1,15 +1,53 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService } from '../../services/user.service'
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css']
 })
-export class StudentsComponent implements OnInit {
+export class StudentsComponent{
 
-  constructor() { }
+	error = null
+	message = null
+	students = []
+	student = null
 
-  ngOnInit() {
-  }
+	constructor(private userService:UserService) {
+	}
+
+	getStudents(){
+		this.error = null
+		this.message = null
+		this.student = null
+		this.userService.getStudents()
+		.then(students=>{
+			console.log(students)
+			this.students = students
+		})
+		.catch(err=>{
+			console.log(err)
+			this.error = 'Unable to load Student list'
+		})
+	}
+
+	reloadStudents(){
+		console.log('reloading')
+		this.getStudents()
+	}
+
+	view(id){
+		this.error = null
+		this.message = null
+		this.student = null
+		this.userService.getStudent(id)
+		.then(student=>{
+			console.log(student)
+			this.student = student
+		})
+		.catch(err=>{
+			this.error = 'Unable to load student'
+		})
+	}
 
 }

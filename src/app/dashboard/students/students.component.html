@@ -1,3 +1,46 @@
-<p>
-  students works!
-</p>
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <h2 class="page-header">
+                Students
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-user"></i> Students
+                </li>
+            </ol>
+            <div class="alert alert-warning" role="alert" *ngIf="error">
+                {{error}}
+            </div>
+            <div class="alert alert-info" role="alert" *ngIf="message">
+                {{message}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <data-table [items]="students" [itemCount]="students.length" (reload)="reloadStudents()" [pagination]="true" [indexColumn]="false" [multiSelect]="true">
+                <data-table-column property="name" header="Name" sortable="true">
+                </data-table-column>
+                <data-table-column property="picture" header="Picture" sortable="false" width="100px">
+                    <template #dataTableCell let-item="item">
+                        <img *ngIf="item.picture" class="img-thumbnail" [src]="item.picture" />
+                    </template>
+                </data-table-column>
+                <data-table-column property="college" header="College">
+                </data-table-column>
+                <data-table-column property="score" header="Score">
+                </data-table-column>
+                <data-table-column header="Actions" width="120px">
+                    <template #dataTableCell let-item="item">
+                        <button type="button" class="btn btn-info btn-sm" (click)="view(item.id)"><i class="fa fa-pencil"></i> Edit</button>
+                    </template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+</div>

@@ -11,7 +11,7 @@ import {AngularFire, FirebaseApp,AuthProviders,AuthMethods} from 'angularfire2';
 @Injectable()
 export class UserService extends ConnectionService {
 
-	private userApi = this.serverUrl + '/user';
+	private userApi = this.serverUrl + '/student';
 	private adminApi = this.serverUrl + '/';
 	private authApi = this.serverUrl + '/auth';
 	public user = null
@@ -67,6 +67,42 @@ export class UserService extends ConnectionService {
 		.then(headers=>{
 			return this.http
 			.post(this.adminApi+'/'+admin.id,admin,{
+				headers:headers
+			})
+			.map(res=>res.json())
+			.toPromise()
+		})
+	}
+
+	getStudents(){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.get(this.userApi,{
+				headers:headers
+			})
+			.map(res=>res.json())
+			.toPromise()
+		})
+	}
+
+	getStudent(studentId){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.get(this.userApi+'/'+studentId,{
+				headers:headers
+			})
+			.map(res=>res.json())
+			.toPromise()
+		})
+	}
+
+	updateStudent(student){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.post(this.userApi+'/'+student.id,student,{
 				headers:headers
 			})
 			.map(res=>res.json())
