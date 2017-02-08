@@ -50,4 +50,18 @@ export class StudentsComponent{
 		})
 	}
 
+	save(){
+		console.log(this.student)
+		this.error = null
+		this.message = null
+		this.userService.updateStudent(this.student)
+		.then(()=>{
+			this.message = 'Student details updated successfully'
+			this.reloadStudents()
+		})
+		.catch(err=>{
+			this.error = 'Unable to update student details'
+		})
+	}
+
 }

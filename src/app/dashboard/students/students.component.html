@@ -26,7 +26,7 @@
             <data-table [items]="students" [itemCount]="students.length" (reload)="reloadStudents()" [pagination]="true" [indexColumn]="false" [multiSelect]="true">
                 <data-table-column property="name" header="Name" sortable="true">
                 </data-table-column>
-                <data-table-column property="picture" header="Picture" sortable="false" width="100px">
+                <data-table-column property="picture" header="Picture" width="100px">
                     <template #dataTableCell let-item="item">
                         <img *ngIf="item.picture" class="img-thumbnail" [src]="item.picture" />
                     </template>
@@ -57,6 +57,10 @@
                 <fieldset class="form-group">
                     <label>Phone</label>
                     <input type="text" class="form-control" [(ngModel)]="student.phone" name="phone" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>College</label>
+                    <input type="text" class="form-control" [(ngModel)]="student.college" name="college" disabled="true" />
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Accomodation</label>
