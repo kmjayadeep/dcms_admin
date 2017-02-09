@@ -14,6 +14,19 @@ export class EventsComponent{
 	events = []
 	event = null
 	eventAdmin = null
+	category = {
+		'AR' : 'Architectural',
+		'EE' : 'Electrical',
+		'EC' : 'Electronics',
+		'ME':'Mechanical', 
+		'CS':'Computer Science',
+		'ROBO':'Robotics',
+		'GEN':'General',
+		'ONLINE':'Online'
+	}
+	categoryArray = Object.keys(this.category).map(key=>{
+		return [key,this.category[key]]
+	})
 
 	constructor(private eventService:EventService) {
 	}
@@ -45,6 +58,7 @@ export class EventsComponent{
 		this.eventService.getEvent(eventId)
 		.then(event=>{
 			console.log(event)
+			event.group = event.group?1:0
 			this.event = event
 		})
 		.catch(err=>{
@@ -128,9 +142,4 @@ export class EventsComponent{
 		if($event.target.files&&$event.target.files[0])
 			this.event.uploadImage = $event.target.files[0]
 	}
-
-	changeGroup(group){
-		this.event.group = group
-	}
-
 }

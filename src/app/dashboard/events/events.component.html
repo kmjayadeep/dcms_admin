@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-primary" (click)="event={}">Add new Event</button>
+            <button class="btn btn-primary" (click)="event={group:0,category:'AR'}">Add new Event</button>
             <data-table [items]="events" [itemCount]="events.length" (reload)="reloadEvents()" [pagination]="true" [indexColumn]="false" [multiSelect]="true">
                 <data-table-column property="name" header="Name" sortable="true">
                 </data-table-column>
@@ -32,9 +32,15 @@
                         <img *ngIf="item.image" class="img-thumbnail" [src]="item.image" />
                     </template>
                 </data-table-column>
-                <data-table-column property="description" header="Description">
-                </data-table-column>
-                <data-table-column property="format" header="Event Format">
+                <data-table-column header="Category">
+                    <template #dataTableCell let-item="item">
+                        {{category[item.category]}}
+                    </template>
+                    <data-table-column header="Total Prize">
+                        <template #dataTableCell let-item="item">
+                            {{item.prize1+item.prize2+item.prize3}}
+                        </template>
+                    </data-table-column>
                 </data-table-column>
                 <data-table-column header="Group Event?" width="120px">
                     <template #dataTableCell let-item="item">
@@ -68,6 +74,14 @@
                     <ckeditor [(ngModel)]="event.format" name="format" debounce="500">
                     </ckeditor>
                 </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="exampleSelect3">Category</label>
+                        <select class="form-control" id="exampleSelect3" [(ngModel)]="event.category" name="category" (change)="event.category = $event.target.value">
+                            <option *ngFor="let cat of categoryArray" [value]="cat[0]">{{cat[1]}}</option>
+                        </select>
+                    </div>
+                </fieldset>
                 <fieldset class="form-group">
                     <label>Event Image</label>
                     <img [src]="event.image" *ngIf="event.image" class="img-thumbnail img-event" />
@@ -88,19 +102,27 @@
                 <fieldset>
                     <div class="form-group">
                         <label for="exampleSelect1">Participation Type</label>
-                        <select class="form-control" id="exampleSelect1" [(ngModel)]="event.group" name="group" (change)="changeGroup($event.target.value)">
+                        <select class="form-control" id="exampleSelect1" [(ngModel)]="event.group" name="group" (change)="event.group = $event.target.value">
                             <option value="0">Individual Event</option>
                             <option value="1">Group Event</option>
                         </select>
                     </div>
                 </fieldset>
-                <fieldset class="form-group" *ngIf="event.group==0">
-                    <label>Maxmimum Participants (leave 0 for unlimited)</label>
-                    <input type="number" class="form-control" [(ngModel)]="event.maxParticipants" name="maxParticipants" />
-                </fieldset>
                 <fieldset class="form-group" *ngIf="event.group==1">
-                    <label>Maxmimum Groups (leave 0 for unlimited)</label>
-                    <input type="number" class="form-control" [(ngModel)]="event.maxGroups" name="maxGroups" />
+                    <label>Maxmimum members per group</label>
+                    <input type="number" class="form-control" [(ngModel)]="event.maxPerGroup" name="maxGroups" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Contact 1</label>
+                    <input type="text" class="form-control" [(ngModel)]="event.contactName1" name="contactName1" placeholder="Name" />
+                    <input type="text" class="form-control" [(ngModel)]="event.contactPhone1" name="contactPhone1" placeholder="Phone" />
+                    <input type="text" class="form-control" [(ngModel)]="event.contactEmail1" name="contactEmail1" placeholder="Email" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Contact 2</label>
+                    <input type="text" class="form-control" [(ngModel)]="event.contactName2" name="contactName2" placeholder="Name" />
+                    <input type="text" class="form-control" [(ngModel)]="event.contactPhone2" name="contactPhone2" placeholder="Phone" />
+                    <input type="text" class="form-control" [(ngModel)]="event.contactEmail2" name="contactEmail2" placeholder="Email" />
                 </fieldset>
                 <br/>
                 <button class="btn btn-info" type="submit" role="input">
