@@ -58,7 +58,7 @@
         </div>
     </div>
     <div class="row" *ngIf="event">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <br/>
             <br/>
             <form role="form" (submit)="save()">
@@ -105,6 +105,10 @@
                     <label>Third Prize</label>
                     <input type="number" class="form-control" [(ngModel)]="event.prize3" name="prize3" />
                 </fieldset>
+                <fieldset class="form-group">
+                    <label>Schedule</label>
+                    <input type="datetime" class="form-control" [(ngModel)]="event.schedule" name="Schedule" />
+                </fieldset>
                 <fieldset>
                     <div class="form-group">
                         <label for="exampleSelect1">Participation Type</label>
@@ -131,36 +135,17 @@
                     <input type="text" class="form-control" [(ngModel)]="event.contactEmail2" name="contactEmail2" placeholder="Email" />
                 </fieldset>
                 <br/>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="exampleSelect2">Event Coordinator</label>
+                        <select class="form-control" id="exampleSelect2" [(ngModel)]="event.adminId" (change)="eventAdmin=$event.target.value" name="eventAdmin">
+                            <option *ngFor="let admin of allAdmins" [value]="admin.id">{{admin.name}}</option>
+                        </select>
+                    </div>
+                </fieldset>
                 <button class="btn btn-info" type="submit" role="input">
                     <i class="fa fa-save"></i> Save
                 </button>
             </form>
-        </div>
-        <div class="col-lg-6" *ngIf="event.id">
-            <br/>
-            <br/>
-            <h5>Event Coordinators</h5>
-            <br/>
-            <ul class="list-group">
-                <li class="list-group-item event-admins" *ngFor="let admin of event.admins">{{admin.name}}<i class="fa fa-close" (click)="deleteAdmin(admin)"></i></li>
-            </ul>
-            <br/>
-            <div class="row">
-                <div class="col-xs-8">
-                    <fieldset>
-                        <div class="form-group">
-                            <label for="exampleSelect2">Add Admin</label>
-                            <select class="form-control" id="exampleSelect2" [(ngModel)]="eventAdmin" (change)="eventAdmin=$event.target.value" name="eventAdmin">
-                                <option *ngFor="let admin of event.allAdmins" [value]="admin.id">{{admin.name}}</option>
-                            </select>
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="col-xs-4">
-                    <button class="btn btn-primary add-button" (click)="addEventAdmin(eventAdmin)">Add</button>
-                </div>
-            </div>
-            <br/>
-            <button class="btn btn-info" (click)="saveEventAdmins()"><i class="fa fa-save"></i> Save</button>
         </div>
     </div>

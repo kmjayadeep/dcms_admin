@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../services/event/event.service'
+import {UserService} from '../../services/user.service'
+
 import * as Promise from 'bluebird'
 
 @Component({
@@ -28,7 +30,13 @@ export class EventsComponent{
 		return [key,this.category[key]]
 	})
 
-	constructor(private eventService:EventService) {
+	allAdmins = []
+
+	constructor(private eventService:EventService,private userService:UserService) {
+		userService.getAdmins()
+		.then((admins)=>{
+			this.allAdmins = admins
+		})
 	}
 
 	getEvents(){
@@ -49,6 +57,10 @@ export class EventsComponent{
 	reloadEvents(){
 		console.log('reloading')
 		this.getEvents()
+		this.userService.getAdmins()
+		.then((admins)=>{
+			this.allAdmins = admins
+		})
 	}
 
 	view(eventId){

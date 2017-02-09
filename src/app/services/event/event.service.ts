@@ -78,20 +78,6 @@ export class EventService extends ConnectionService{
 		})
 	}
 
-	updateAdmins(eventId,admins){
-		return this.getHeaders()
-		.then(headers=>{
-			return this.http
-			.put(this.eventApi+'/admin/'+eventId,{
-				adminIds:admins
-			},{
-				headers:headers
-			})
-			.map(res=>res.json())
-			.toPromise()
-		})
-	}
-
 	uploadPic(eventId,file){
 		let path = 'images/event/'+eventId+file.name
 		let ref = this.firebaseApp.storage().ref().child(path)

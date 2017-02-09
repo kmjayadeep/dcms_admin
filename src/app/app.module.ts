@@ -30,6 +30,8 @@ import {EventService} from './services/event/event.service';
 
 import {DataTableModule} from 'angular-2-data-table-bootstrap4'
 
+
+
 export const firebaseConfig = {
 	apiKey: 'AIzaSyCvN9K2cdfUf4H8BIr8vqRhdtGV_ca2UIs',
     authDomain: 'drishti-bd782.firebaseapp.com',
