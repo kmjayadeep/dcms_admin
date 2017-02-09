@@ -107,7 +107,8 @@
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Schedule</label>
-                    <input type="datetime" class="form-control" [(ngModel)]="event.schedule" name="Schedule" />
+                    <input type="number" [(ngModel)]="event.day" name="day" placeholder="day" class="form-control" />
+                    <input type="time" [(ngModel)]="event.time" name="time" placeholder="time" class="form-control" />
                 </fieldset>
                 <fieldset>
                     <div class="form-group">
