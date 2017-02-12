@@ -120,21 +120,6 @@ export class EventsComponent{
 		})
 	}
 
-	saveEventAdmins(){
-		this.message = null
-		this.error = null
-		let admins = this.event.admins.map(ad=>ad.id)
-		this.eventService.updateAdmins(this.event.id,admins)
-		.then(()=>{
-			this.message = 'Event coordinators updated'
-			this.reloadEvents()
-		})
-		.catch(err=>{
-			console.log(err)
-			this.error = 'Unable to edit event coordinators'
-		})
-	}
-
 	addEventAdmin(adminId){
 		if(!adminId)
 			return
