@@ -10,6 +10,7 @@ import { BSElementRoutes } from './bs-element/index';
 import { AdminsRoutes} from './admins/index'
 import { EventsRoutes} from './events/index'
 import { StudentRoutes} from './students/student.routes'
+import { WorkshopRoutes} from './workshop/workshop.routes'
 
 import { DashboardComponent } from './index';
 
@@ -22,6 +23,7 @@ export const DashboardRoutes: Route[] = [
     ...AdminsRoutes,
     ...EventsRoutes,
     ...StudentRoutes,
+    ...WorkshopRoutes,
     ...BSComponentRoutes,
     ...TableRoutes,
     ...BlankPageRoutes,

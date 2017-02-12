@@ -44,7 +44,9 @@
                 </data-table-column>
                 <data-table-column property="regFee" header="Reg Fee" sortable="true">
                 </data-table-column>
-                <data-table-column header="Event Type" width="120px">
+                <data-table-column property="day" header="Day" sortable="true">
+                </data-table-column>
+                <data-table-column header="Event Type" width="120px" sortable="true">
                     <template #dataTableCell let-item="item">
                         {{item.group==1?'Group':'Individual'}}
                     </template>
