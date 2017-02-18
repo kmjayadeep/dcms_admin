@@ -1,3 +1,154 @@
-<p>
-  workshop works!
-</p>
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <h2 class="page-header">
+                Workshops
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-television"></i> Workshops
+                </li>
+            </ol>
+            <div class="alert alert-warning" role="alert" *ngIf="error">
+                {{error}}
+            </div>
+            <div class="alert alert-info" role="alert" *ngIf="message">
+                {{message}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary" (click)="workshop={group:0,category:'AR'}">Add new workshop</button>
+            <data-table [items]="workshops" [itemCount]="workshops.length" (reload)="reloadWorkshops()" [pagination]="true" [indexColumn]="false" [multiSelect]="true">
+                <data-table-column property="name" header="Name" sortable="true">
+                </data-table-column>
+                <data-table-column property="image" header="Image" width="100px">
+                    <template #dataTableCell let-item="item">
+                        <img *ngIf="item.image" class="img-thumbnail" [src]="item.image" />
+                    </template>
+                </data-table-column>
+                <data-table-column header="Category">
+                    <template #dataTableCell let-item="item">
+                        {{category[item.category]}}
+                    </template>
+                    <data-table-column header="Total Prize">
+                        <template #dataTableCell let-item="item">
+                            {{item.prize1+item.prize2+item.prize3}}
+                        </template>
+                    </data-table-column>
+                </data-table-column>
+                <data-table-column property="regFee" header="Reg Fee" sortable="true">
+                </data-table-column>
+                <data-table-column property="day" header="Day" sortable="true">
+                </data-table-column>
+                <data-table-column header="Workshop Type" width="120px" sortable="true">
+                    <template #dataTableCell let-item="item">
+                        {{item.group==1?'Group':'Individual'}}
+                    </template>
+                </data-table-column>
+                <data-table-column header="Actions" width="120px">
+                    <template #dataTableCell let-item="item">
+                        <button type="button" class="btn btn-info btn-sm" (click)="view(item.id)"><i class="fa fa-pencil"></i> Edit</button>
+                    </template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+    <div class="row" *ngIf="workshop">
+        <div class="col-lg-12">
+            <br/>
+            <br/>
+            <form role="form" (submit)="save()">
+                <fieldset class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="workshop.name" name="name" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Description</label>
+                    <ckeditor [(ngModel)]="workshop.description" name="description" debounce="500">
+                    </ckeditor>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>workshop Format</label>
+                    <ckeditor [(ngModel)]="workshop.format" name="format" debounce="500">
+                    </ckeditor>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="exampleSelect3">Category</label>
+                        <select class="form-control" id="exampleSelect3" [(ngModel)]="workshop.category" name="category" (change)="workshop.category = $event.target.value">
+                            <option *ngFor="let cat of categoryArray" [value]="cat[0]">{{cat[1]}}</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>workshop Image</label>
+                    <img [src]="workshop.image" *ngIf="workshop.image" class="img-thumbnail img-workshop" />
+                    <input type="file" class="form-control" (change)="fileChange($event)" name="image" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Registration Fee</label>
+                    <input type="number" class="form-control" [(ngModel)]="workshop.regFee" name="regFee" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>First Prize</label>
+                    <input type="number" class="form-control" [(ngModel)]="workshop.prize1" name="prize1" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Second Prize</label>
+                    <input type="number" class="form-control" [(ngModel)]="workshop.prize2" name="prize2" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Third Prize</label>
+                    <input type="number" class="form-control" [(ngModel)]="workshop.prize3" name="prize3" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Schedule</label>
+                    <input type="number" [(ngModel)]="workshop.day" name="day" placeholder="day" class="form-control" />
+                    <input type="time" [(ngModel)]="workshop.time" name="time" placeholder="time" class="form-control" />
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="exampleSelect1">Participation Type</label>
+                        <select class="form-control" id="exampleSelect1" [(ngModel)]="workshop.group" name="group" (change)="workshop.group = $event.target.value">
+                            <option value="0">Individual workshop</option>
+                            <option value="1">Group workshop</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group" *ngIf="workshop.group==1">
+                    <label>Maxmimum members per group</label>
+                    <input type="number" class="form-control" [(ngModel)]="workshop.maxPerGroup" name="maxGroups" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Contact 1</label>
+                    <input type="text" class="form-control" [(ngModel)]="workshop.contactName1" name="contactName1" placeholder="Name" />
+                    <input type="text" class="form-control" [(ngModel)]="workshop.contactPhone1" name="contactPhone1" placeholder="Phone" />
+                    <input type="text" class="form-control" [(ngModel)]="workshop.contactEmail1" name="contactEmail1" placeholder="Email" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Contact 2</label>
+                    <input type="text" class="form-control" [(ngModel)]="workshop.contactName2" name="contactName2" placeholder="Name" />
+                    <input type="text" class="form-control" [(ngModel)]="workshop.contactPhone2" name="contactPhone2" placeholder="Phone" />
+                    <input type="text" class="form-control" [(ngModel)]="workshop.contactEmail2" name="contactEmail2" placeholder="Email" />
+                </fieldset>
+                <br/>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="exampleSelect2">workshop Coordinator</label>
+                        <select class="form-control" id="exampleSelect2" [(ngModel)]="workshop.adminId" (change)="workshopAdmin=$event.target.value" name="workshopAdmin">
+                            <option *ngFor="let admin of allAdmins" [value]="admin.id">{{admin.name}}</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <button class="btn btn-info" type="submit" role="input">
+                    <i class="fa fa-save"></i> Save
+                </button>
+            </form>
+        </div>
+    </div>
