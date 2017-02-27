@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <h2 class="page-header">
+                Volunteer
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-check"></i> Volunteer
+                </li>
+            </ol>
+            <div class="alert alert-warning" role="alert" *ngIf="error">
+                {{error}}
+            </div>
+            <div class="alert alert-info" role="alert" *ngIf="message">
+                {{message}}
+            </div>
+        </div>
+    </div>
+    <div class="row" layout-align="center center">
+        <form role="form" (submit)="emailEntered()">
+            <div class="col-lg-6">
+                <fieldset class="form-group">
+                    <label>Email Id</label>
+                    <input class="form-control" [(ngModel)]="student.email" name="email"placeholder="Email Id">
+                </fieldset>
+                <button type="submit" class="btn btn-secondary">Get Details</button>
+            </div>
+        </form>
+    </div>
+</div>

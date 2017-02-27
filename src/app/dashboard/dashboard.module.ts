@@ -29,7 +29,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
 
 import {firebaseConfig} from '../app.module';
 import { WorkshopComponent } from './workshop/workshop.component';
-import { AccomodationComponent } from './accomodation/accomodation.component'
+import { AccomodationComponent } from './accomodation/accomodation.component';
+import { VolunteerComponent } from './volunteer/volunteer.component'
 
 const myFirebaseAuthConfig = {
   provider: AuthProviders.Google,
@@ -56,7 +57,7 @@ const myFirebaseAuthConfig = {
         AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
         CKEditorModule
     ],
-    declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent, EventsComponent, StudentsComponent, WorkshopComponent, AccomodationComponent],
+    declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent, EventsComponent, StudentsComponent, WorkshopComponent, AccomodationComponent, VolunteerComponent],
     exports: [DashboardComponent, TopNavComponent, SidebarComponent]
 })
 
