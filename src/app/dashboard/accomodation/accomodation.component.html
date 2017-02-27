@@ -1,3 +1,30 @@
-<p>
-  accomodation works!
-</p>
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <h2 class="page-header">
+                Accomodation
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-building"></i> Accomodation
+                </li>
+            </ol>
+            <div class="alert alert-warning" role="alert" *ngIf="error">
+                {{error}}
+            </div>
+            <div class="alert alert-info" role="alert" *ngIf="message">
+                {{message}}
+            </div>
+        </div>
+    </div>
+    <div class="row" layout-align="center center">
+        <fieldset class="form-group">
+            <label></label>
+            <input class="form-control" placeholder="Enter text">
+        </fieldset>
+    </div>
+</div>

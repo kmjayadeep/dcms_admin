@@ -11,6 +11,7 @@ import { AdminsRoutes} from './admins/index'
 import { EventsRoutes} from './events/index'
 import { StudentRoutes} from './students/student.routes'
 import { WorkshopRoutes} from './workshop/workshop.routes'
+import { AccomodationRoutes} from './accomodation/accomodation.routes'
 
 import { DashboardComponent } from './index';
 
@@ -24,6 +25,7 @@ export const DashboardRoutes: Route[] = [
     ...EventsRoutes,
     ...StudentRoutes,
     ...WorkshopRoutes,
+    ...AccomodationRoutes,
     ...BSComponentRoutes,
     ...TableRoutes,
     ...BlankPageRoutes,
