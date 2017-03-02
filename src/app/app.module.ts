@@ -27,7 +27,8 @@ import {UserService} from './services/user.service';
 
 import {EventService} from './services/event/event.service';
 import {WorkshopService} from './services/workshop/workshop.service';
-
+import {VolunteerService} from './services/volunteer/volunteer.service';
+	
 
 import {DataTableModule} from 'angular-2-data-table-bootstrap4';
 
@@ -70,7 +71,8 @@ const myFirebaseAuthConfig = {
 	, UserService
 	,AuthService
 	,EventService,
-	WorkshopService
+	WorkshopService,
+	VolunteerService
 	],
 	bootstrap: [AppComponent]
 
