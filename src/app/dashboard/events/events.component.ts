@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../services/event/event.service'
 import {UserService} from '../../services/user.service'
+import { DataTableResource } from 'angular-2-data-table-bootstrap4';
 
 import * as Promise from 'bluebird'
 
@@ -10,7 +11,6 @@ import * as Promise from 'bluebird'
 	styleUrls: ['./events.component.css']
 })
 export class EventsComponent{
-
 	error = null
 	message = null
 	events = []
@@ -31,6 +31,7 @@ export class EventsComponent{
 	})
 
 	allAdmins = []
+	itemResource:any = []
 
 	constructor(private eventService:EventService,private userService:UserService) {
 		userService.getAdmins()
@@ -39,14 +40,21 @@ export class EventsComponent{
 		})
 	}
 
-	getEvents(){
+	getEvents(query?){
 		this.error = null
 		this.message = null
 		this.event = null
 		this.eventService.getEvents()
 		.then(events=>{
 			console.log(events)
-			this.events = events
+			this.itemResource = new DataTableResource(events)
+			if(!query)
+				this.events = events
+			else
+				this.itemResource.query(query)
+			.then(items=>{
+				this.events = items
+			})
 		})
 		.catch(err=>{
 			console.log(err)
@@ -54,9 +62,16 @@ export class EventsComponent{
 		})
 	}
 
-	reloadEvents(){
+	reloadEvents(query){
 		console.log('reloading')
-		this.getEvents()
+		console.log(query)
+		if(query&&this.events.length!=0){
+			return this.itemResource.query(query)
+			.then(items=>{
+				this.events = items
+			})
+		}
+		this.getEvents(query)
 		this.userService.getAdmins()
 		.then((admins)=>{
 			this.allAdmins = admins
@@ -112,7 +127,7 @@ export class EventsComponent{
 			console.log(event)
 			this.message = 'Event Updated Successfully'
 			this.event = null
-			this.reloadEvents()
+			this.getEvents()
 		})
 		.catch(err=>{
 			console.log(err)
