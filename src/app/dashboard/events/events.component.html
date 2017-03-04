@@ -74,7 +74,7 @@
                     </ckeditor>
                 </fieldset>
                 <fieldset class="form-group">
-                    <label>Event Format</label>
+                    <label>Event Format (Rules)</label>
                     <ckeditor [(ngModel)]="event.format" name="format" debounce="500">
                     </ckeditor>
                 </fieldset>
@@ -109,7 +109,7 @@
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Schedule</label>
-                    <input type="number" [(ngModel)]="event.day" name="day" placeholder="day" class="form-control" />
+                    <input type="number" [(ngModel)]="event.day" name="day" placeholder="day (1, 2 or 3)" class="form-control" />
                     <input type="time" [(ngModel)]="event.time" name="time" placeholder="time" class="form-control" />
                 </fieldset>
                 <fieldset>

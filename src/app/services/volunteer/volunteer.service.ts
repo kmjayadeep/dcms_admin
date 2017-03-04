@@ -9,7 +9,7 @@ import {AngularFire, FirebaseApp,AuthProviders,AuthMethods} from 'angularfire2';
 @Injectable()
 export class VolunteerService extends ConnectionService{
 
-	private volunteerApi = this.serverUrl + '/dcms-admin/volunteer';
+	private volunteerApi = this.serverUrl + '/volunteer';
 
 	constructor(public af: AngularFire, @Inject(FirebaseApp) private firebaseApp: any, protected http: Http) {
 		super(af,firebaseApp,http);
@@ -20,9 +20,8 @@ export class VolunteerService extends ConnectionService{
 		return this.getHeaders()
 		.then(headers=>{
 			return this.http
-			.get(this.volunteerApi+'/registeredEvents',{
-				headers:headers,
-				search: student
+			.post(this.volunteerApi+'/registeredEvents',student,{
+				headers:headers
 			})
 			.map(res=>res.json())
 			.toPromise()
