@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-primary" (click)="workshop={group:0,category:'AR'}">Add new workshop</button>
+            <button class="btn btn-primary" (click)="workshop={group:0,category:'GEN'}">Add new workshop</button>
             <data-table [items]="workshops" [itemCount]="workshops.length" (reload)="reloadWorkshops()" [pagination]="true" [indexColumn]="false" [multiSelect]="true">
                 <data-table-column property="name" header="Name" sortable="true">
                 </data-table-column>
@@ -73,11 +73,11 @@
                     <ckeditor [(ngModel)]="workshop.description" name="description" debounce="500">
                     </ckeditor>
                 </fieldset>
-                <fieldset class="form-group">
+                <!--<fieldset class="form-group">
                     <label>Workshop Format (Rules)</label>
                     <ckeditor [(ngModel)]="workshop.format" name="format" debounce="500">
                     </ckeditor>
-                </fieldset>
+                </fieldset>-->
                 <fieldset>
                     <div class="form-group">
                         <label for="exampleSelect3">Category</label>

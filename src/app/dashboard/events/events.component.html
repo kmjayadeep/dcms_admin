@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-primary" (click)="event={group:0,category:'AR'}">Add new Event</button>
+            <button class="btn btn-primary" (click)="event={group:0,category:'GEN'}">Add new Event</button>
             <data-table [items]="events" [itemCount]="events.length" (reload)="reloadEvents($event)" [pagination]="true" [indexColumn]="false" [multiSelect]="true">
                 <data-table-column property="name" header="Name" sortable="true">
                 </data-table-column>
