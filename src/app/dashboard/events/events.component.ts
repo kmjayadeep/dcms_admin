@@ -17,14 +17,16 @@ export class EventsComponent{
 	event = null
 	eventAdmin = null
 	category = {
-		'AR' : 'Architectural',
+		'ORIGINALS':'Drishti Originals',
+		'GAMING':'Gaming',
+		'ONLINE':'Online',
+		'GEN':'General',
+		'CIVIL' : 'Civil',
 		'EE' : 'Electrical',
 		'EC' : 'Electronics',
 		'ME':'Mechanical', 
 		'CS':'Computer Science',
-		'ROBO':'Robotics',
-		'GEN':'General',
-		'ONLINE':'Online'
+		'ROBO':'Robotics'
 	}
 	categoryArray = Object.keys(this.category).map(key=>{
 		return [key,this.category[key]]
