@@ -3,9 +3,6 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import {EventService} from '../../services/event/event.service'
 import {UserService} from '../../services/user.service'
 import { DataTableResource } from 'angular-2-data-table-bootstrap4';
-import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
-
-import * as Promise from 'bluebird'
 
 @Component({
   selector: 'app-event-registration',

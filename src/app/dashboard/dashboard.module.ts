@@ -33,12 +33,12 @@ import { AccomodationComponent } from './accomodation/accomodation.component';
 import { VolunteerComponent } from './volunteer/volunteer.component';
 import { EventRegistrationComponent } from './event-registration/event-registration.component'
 
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+
 const myFirebaseAuthConfig = {
   provider: AuthProviders.Google,
   method: AuthMethods.Popup
 };
-
-
 
 @NgModule({
     imports: [
@@ -56,7 +56,9 @@ const myFirebaseAuthConfig = {
         BlankPageModule,
         DataTableModule,
         AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
-        CKEditorModule
+        CKEditorModule,
+        Ng2AutoCompleteModule
+
     ],
     declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent, EventsComponent, StudentsComponent, WorkshopComponent, AccomodationComponent, VolunteerComponent, EventRegistrationComponent],
     exports: [DashboardComponent, TopNavComponent, SidebarComponent]

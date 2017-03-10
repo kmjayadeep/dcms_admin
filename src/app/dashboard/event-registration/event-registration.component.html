@@ -22,14 +22,12 @@
         </div>
     </div>
     <div class="row" layout-align="center center">
-        <form class="form-horizontal" (ngSubmit)="getRegistered(myForm.value)">
-            <div>
-                <div class="col-sm-5">
-                    <input ng2-auto-complete formControlName="event" [source]="eventList" [list-formatter]="autocompleListFormatter" value-property-name="id" display-property-name="name" placeholder="Contients" class="form-control">
-                </div><br/>
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-
+        <div class="col-sm-5">
+            <form class="form-horizontal" (ngSubmit)="getRegistered(myForm.value)">
+                <div>
+                    <input ng2-auto-complete [source]="eventList" [list-formatter]="autocompleListFormatter" value-property-name="id" display-property-name="name" placeholder="Contients" class="form-control">
+                </div>
+            </form>
+        </div>
     </div>
 </div>

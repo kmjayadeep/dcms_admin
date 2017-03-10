@@ -19,7 +19,7 @@ import {AuthService} from './services/auth/auth.service'
 import {DropdownModule,AlertModule} from 'ng2-bootstrap'
 
 import { CKEditorModule } from 'ng2-ckeditor';
-import { HTTP_PROVIDERS } from 'angular2/http';
+// import { HTTP_PROVIDERS } from 'angular2/http';
 
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -72,7 +72,7 @@ const myFirebaseAuthConfig = {
 		useValue: '/'
 	}, ConnectionService
 	, UserService
-	,HTTP_PROVIDERS
+	// ,HTTP_PROVIDERS
 	,AuthService
 	,EventService,
 	WorkshopService,
