@@ -5,7 +5,8 @@ import * as Promise from 'bluebird'
 
 @Injectable()
 export class ConnectionService {
-	public serverUrl = 'http://localhost:3000/dcms-admin';
+	// public serverUrl = 'http://localhost:3000/dcms-admin';
+	public serverUrl = 'http://server.drishticet.org/dcms-admin';
 	public firebase:any
 
 	constructor(public af: AngularFire, @Inject(FirebaseApp) firebase: any,http:Http) {

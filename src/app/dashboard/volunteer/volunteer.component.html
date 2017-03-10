@@ -34,7 +34,10 @@
     </div>
     <div class="mt-2"> 
       <ul class="list-group">
-        <li *ngFor="let event of registeredEvents" class="list-group-item">{{event.name}}</li>
+        <div *ngFor="let event of registeredEvents" class="row list-group-item">
+            <span>{{event.name}}</span>
+            <button type="button" class="btn btn-primary pull-right">Confirm Payment</button>
+        </div>
       </ul>
     </div>
 </div>

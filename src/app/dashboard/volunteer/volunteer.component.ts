@@ -8,11 +8,17 @@ import {VolunteerService} from '../../services/volunteer/volunteer.service'
 })
 export class VolunteerComponent{
 
-  student={};
+  student:any={};
   error = null;
   public registeredEvents=[];
   
-  constructor(private volunteerService:VolunteerService) { }
+  constructor(private volunteerService:VolunteerService) { 
+
+  // for test purposes
+  this.student['email']="johndoe@gmail.com";
+  this.emailEntered();
+
+  }
 
   emailEntered() {
     this.registeredEvents=[];
@@ -25,8 +31,8 @@ export class VolunteerComponent{
     }).catch(error=>{
       console.log(error);
       this.registeredEvents=[];
-  		this.error=error.message;
-  	})
+      this.error=error.message;
+    })
   }
 
 }

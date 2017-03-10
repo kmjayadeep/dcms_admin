@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <h2 class="page-header">
+                Event Registration
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-list"></i> Event Registration
+                </li>
+            </ol>
+            <div class="alert alert-warning" role="alert" *ngIf="error">
+                {{error}}
+            </div>
+            <div class="alert alert-info" role="alert" *ngIf="message">
+                {{message}}
+            </div>
+        </div>
+    </div>
+    <div class="row" layout-align="center center">
+        <form class="form-horizontal" (ngSubmit)="getRegistered(myForm.value)">
+            <div>
+                <div class="col-sm-5">
+                    <input ng2-auto-complete formControlName="event" [source]="eventList" [list-formatter]="autocompleListFormatter" value-property-name="id" display-property-name="name" placeholder="Contients" class="form-control">
+                </div><br/>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>

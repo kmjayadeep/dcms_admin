@@ -12,12 +12,14 @@ import { LoginModule } from './login/login.module';
 import { SignupModule } from './signup/signup.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import {AuthService} from './services/auth/auth.service'
 
 import {DropdownModule,AlertModule} from 'ng2-bootstrap'
 
 import { CKEditorModule } from 'ng2-ckeditor';
+import { HTTP_PROVIDERS } from 'angular2/http';
 
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -53,6 +55,7 @@ const myFirebaseAuthConfig = {
 		HttpModule,
 		RouterModule.forRoot(routes),
 		LoginModule,
+		Ng2AutoCompleteModule,
 		SignupModule,
 		DashboardModule,
 		SharedModule.forRoot(),
@@ -69,6 +72,7 @@ const myFirebaseAuthConfig = {
 		useValue: '/'
 	}, ConnectionService
 	, UserService
+	,HTTP_PROVIDERS
 	,AuthService
 	,EventService,
 	WorkshopService,
