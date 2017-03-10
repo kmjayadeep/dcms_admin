@@ -90,5 +90,16 @@ export class EventService extends ConnectionService{
 					})
 				})
 	}
+
+	getRegisteredStudents(eventId){
+		return this.getHeaders()
+		.then(headers=>{
+			return this.http
+			.get(this.eventApi+'/student/'+eventId,{
+				headers: headers
+			}).map(res=>res.json())
+			.toPromise();
+		})
+	}
 	
 }

@@ -23,11 +23,27 @@
     </div>
     <div class="row" layout-align="center center">
         <div class="col-sm-5">
-            <form class="form-horizontal" (ngSubmit)="getRegistered(myForm.value)">
+            <form class="form-horizontal" (ngSubmit)="getRegistered()">
                 <div>
-                    <input ng2-auto-complete [source]="eventList" [list-formatter]="autocompleListFormatter" value-property-name="id" display-property-name="name" placeholder="Contients" class="form-control">
+                    <input [(ngModel)]="selectedEvent" name="selectedEvent" ng2-auto-complete [source]="eventList" [list-formatter]="autocompleListFormatter" value-property-name="id" display-property-name="name" placeholder="Event Name" class="form-control">
                 </div>
             </form>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="col">
+            <ul class="list-group">
+                <div *ngFor="let student of registeredStudents">
+                    <li class="list-group-item">
+                        {{student.name}}
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="mailto:{{student.email}}">{{student.email}}</a></li>
+                            <li class="list-group-item"><a href="tel:{{student.phone}}">{{student.phone}}</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
         </div>
     </div>
 </div>
