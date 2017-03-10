@@ -30,11 +30,11 @@ export class EventRegistrationComponent implements OnInit {
 		this.error = null;
 		this.message = null;
 		this.event = null;
-		this.eventService.getEvents()
-		.then(events=>{
+		this.eventService.getEventAndWorkShop()
+		.then((events:any)=>{
       this.error=null;
 			console.log(events)
-      this.eventList=events.map(x=>{
+      this.eventList = events.map(x=>{
         return {
           id: x.id,
           name: x.name,

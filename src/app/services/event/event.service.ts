@@ -101,5 +101,12 @@ export class EventService extends ConnectionService{
 			.toPromise();
 		})
 	}
+
+	getEventAndWorkShop(){
+		return this.http
+		.get(this.serverUrl.split('/').slice(0,-1).join('/')+'/public/event',{})
+		.map(res=>res.json())
+		.toPromise();
+	}
 	
 }
