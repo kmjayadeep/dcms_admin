@@ -18,10 +18,12 @@ export class EventsComponent{
 	eventAdmin = null
 	category = {
 		'ORIGINALS':'Drishti Originals',
+		'COMECON':'Comecon',
 		'GAMING':'Gaming',
 		'ONLINE':'Online',
 		'GEN':'General',
 		'CIVIL' : 'Civil',
+		'AR' : 'Architecture',
 		'EE' : 'Electrical',
 		'EC' : 'Electronics',
 		'ME':'Mechanical', 

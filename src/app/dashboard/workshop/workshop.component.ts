@@ -18,16 +18,18 @@ export class WorkshopComponent {
 	workshop = null
 	WorkshopAdmin = null
 	category = {
-		'ORIGINALS': 'Drishti Originals',
-		'GAMING': 'Gaming',
-		'ONLINE': 'Online',
-		'GEN': 'General',
-		'CIVIL': 'Civil',
-		'EE': 'Electrical',
-		'EC': 'Electronics',
-		'ME': 'Mechanical',
-		'CS': 'Computer Science',
-		'ROBO': 'Robotics'
+		'ORIGINALS':'Drishti Originals',
+		'COMECON':'Comecon',
+		'GAMING':'Gaming',
+		'ONLINE':'Online',
+		'GEN':'General',
+		'CIVIL' : 'Civil',
+		'AR' : 'Architecture',
+		'EE' : 'Electrical',
+		'EC' : 'Electronics',
+		'ME':'Mechanical', 
+		'CS':'Computer Science',
+		'ROBO':'Robotics'
 	}
 	categoryArray = Object.keys(this.category).map(key => {
 		return [key, this.category[key]]
