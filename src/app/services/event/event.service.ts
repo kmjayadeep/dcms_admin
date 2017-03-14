@@ -112,6 +112,18 @@ export class EventService extends ConnectionService{
             .toPromise();
         })
     }
+    
+    getRegisteredCountAll() {
+        return this.getHeaders()
+        .then(headers=>{
+            return this.http
+            .get(this.eventApi+'/registeredCount',{
+                headers: headers
+            }).map(res=>res.json())
+            .toPromise();
+        })
+    }
+
     getEventAndWorkShop(){
         return this.http
         .get(this.serverUrl.split('/').slice(0,-1).join('/')+'/public/event',{})
