@@ -22,17 +22,27 @@
         </div>
     </div>
     <div class="row" layout-align="center center">
-        <div class="col-sm-5">
-            <form class="form-horizontal" (ngSubmit)="getRegistered()">
+        <form id="eventRegForm" class="form-horizontal" (ngSubmit)="getRegistered()">
+            <div class="col-sm-5">
                 <div>
                     <input [(ngModel)]="selectedEvent" name="selectedEvent" ng2-auto-complete [source]="eventList" [list-formatter]="autocompleListFormatter" value-property-name="id" display-property-name="name" placeholder="Event/Workshop Name" class="form-control">
                 </div>
-            </form>
-        </div>
+            </div>
+            <button type="submit" class="btn btn-default" form="eventRegForm" value="Submit">Search</button>
+        </form>
         <br>
         <br>
         <br>
         <div class="col">
+            <div *ngIf="event && event.group">
+                <span>Groups Registered <span class="badge">{{event.studentCount}}</span></span>
+                <br>
+                <span *ngIf="event.totalCount"> Total Student <span class="badge">{{event.totalCount}}</span> </span>
+            </div>
+            <div *ngIf="event && !event.group">
+                <span>Students Registered <span class="badge">{{event.studentCount}}</span></span>
+            </div>
+
             <ul class="list-group">
                 <div *ngFor="let student of registeredStudents">
                     <li class="list-group-item">
@@ -40,6 +50,20 @@
                         <ul class="list-group">
                             <li class="list-group-item"><a href="mailto:{{student.email}}">{{student.email}}</a></li>
                             <li class="list-group-item"><a href="tel:{{student.phone}}">{{student.phone}}</a></li>
+                            <li class="list-group-item">{{student.college}}</li>
+                            <div *ngIf="student.group.length > 1">
+                                Group
+                                <div *ngFor="let groupMember of student.group">
+                                    <ul class="list-group" *ngIf="groupMember.id!=student.id">
+                                        <li class="list-group-item">{{groupMember.name}}</li>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><a href="mailto:{{groupMember.email}}">{{groupMember.email}}</a></li>
+                                            <li class="list-group-item"><a href="tel:{{groupMember.phone}}">{{groupMember.phone}}</a></li>
+                                            <li class="list-group-item">{{groupMember.college}}</li>
+                                        </ul>
+                                    </ul>
+                                </div>
+                            </div>
                         </ul>
                     </li>
                 </div>
