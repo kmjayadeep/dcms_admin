@@ -34,6 +34,7 @@ import { VolunteerComponent } from './volunteer/volunteer.component';
 import { EventRegistrationComponent } from './event-registration/event-registration.component'
 
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { ResultComponent } from './result/result.component';
 
 const myFirebaseAuthConfig = {
   provider: AuthProviders.Google,
@@ -60,7 +61,7 @@ const myFirebaseAuthConfig = {
         Ng2AutoCompleteModule
 
     ],
-    declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent, EventsComponent, StudentsComponent, WorkshopComponent, AccomodationComponent, VolunteerComponent, EventRegistrationComponent],
+    declarations: [DashboardComponent, TopNavComponent, SidebarComponent, AdminsComponent, EventsComponent, StudentsComponent, WorkshopComponent, AccomodationComponent, VolunteerComponent, EventRegistrationComponent, ResultComponent],
     exports: [DashboardComponent, TopNavComponent, SidebarComponent]
 })
 
