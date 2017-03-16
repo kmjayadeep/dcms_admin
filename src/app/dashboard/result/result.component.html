@@ -22,7 +22,8 @@
         </div>
     </div>
     <div class="row" layout-align="center center">
-        <form id="eventRegForm" class="form-horizontal" (ngSubmit)="getRegistered()">
+
+        <form id="eventRegForm" class="form-horizontal" (ngSubmit)="getResult()">
             <div class="col-sm-5">
                 <div>
                     <input [(ngModel)]="selectedEvent" name="selectedEvent" ng2-auto-complete [source]="eventList" [list-formatter]="autocompleListFormatter" value-property-name="id" display-property-name="name" placeholder="Event/Workshop Name" class="form-control">
@@ -34,7 +35,13 @@
         <br>
         <br>
         <div class="col">
-
+            <div *ngIf="results">
+                <ul class="list-group">
+                    <div *ngFor="let result of results">
+                        <li class="list-group-item">{{result.position}} - {{result.student.name}}, {{result.student.phone}}</li>
+                    </div>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

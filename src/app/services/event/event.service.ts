@@ -130,5 +130,29 @@ export class EventService extends ConnectionService{
         .map(res=>res.json())
         .toPromise();
     }
-    
+
+    getResult(eventId){
+        return this.getHeaders()
+        .then(headers=>{
+        return this.http
+        .get(this.serverUrl+'/event/result/'+eventId,{
+                headers: headers
+            })
+        .map(res=>res.json())
+        .toPromise();
+        });
+    }   
+
+    putResult(eventId, position, points, identifier){
+        return this.getHeaders()
+        .then(headers=>{
+            return this.http
+            .post(this.serverUrl+'/event/result/'+eventId,{
+                position: position,
+                points: points,
+                identifier: identifier
+            }).map(res=>res.json())
+            .toPromise();
+        });
+    }
 }
