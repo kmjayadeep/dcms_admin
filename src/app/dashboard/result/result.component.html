@@ -36,11 +36,24 @@
         <br>
         <div class="col">
             <div *ngIf="results">
-                <ul class="list-group">
-                    <div *ngFor="let result of results">
-                        <li class="list-group-item">{{result.position}} - {{result.student.name}}, {{result.student.phone}}</li>
-                    </div>
-                </ul>
+                <table class="table">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Position</th>
+                            <th>Name</th>
+                            <th>College</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let result of results">
+                            <td>{{result.position}}</td>
+                            <td>{{result.student.name}}</td>
+                            <td>{{result.college.name}}</td>
+                            <td>{{result.points}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
