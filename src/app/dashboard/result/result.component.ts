@@ -21,6 +21,7 @@ export class ResultComponent implements OnInit {
   registeredStudents = [];
   eventList = [];
   selectedEvent= null;
+  showAddResult = false;
   constructor(private eventService: EventService, private _sanitizer: DomSanitizer) {
  }
 
@@ -59,6 +60,11 @@ export class ResultComponent implements OnInit {
 
   getResult(){
     this.error = "please wait";
+    this.showAddResult = false
+    this.position = 0;
+    this.points = "0";
+    this.identifier = "";
+
     this.eventService.getResult(this.selectedEvent.id)
     .then(result => {
       console.log(result);
@@ -66,7 +72,7 @@ export class ResultComponent implements OnInit {
         this.results = result;
     }).catch(error => {
       console.log(error);
-      this.error = 'Unable to get students';
+      this.error = 'Unable to get events';
     });
   }
 
@@ -76,21 +82,27 @@ export class ResultComponent implements OnInit {
       return;
     }
     
-    if (this.points=''){
+    if (this.points==''){
       this.error = "please fill all values";
       return;
     }
     
-    if (this.identifier=''){
+    if (this.identifier==''){
       this.error = "please fill all values";
       return;
     }
 
     this.error = "please wait";
+    console.log(this.position)
+    console.log(this.identifier)
+    console.log(this.points)
     this.eventService.putResult(this.selectedEvent.id, this.position, this.points, this.identifier)
     .then(result=>{
       this.error="done";
       this.getResult();
+    })
+    .catch(err=>{
+      this.error="Unable to add Result"
     })
 
   }

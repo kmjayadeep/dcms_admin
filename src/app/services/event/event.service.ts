@@ -151,6 +151,8 @@ export class EventService extends ConnectionService{
                 position: position,
                 points: points,
                 identifier: identifier
+            },{
+                headers:headers
             }).map(res=>res.json())
             .toPromise();
         });
